@@ -1,0 +1,20 @@
+{
+  "siteTitle": "Thesis topics",
+  "siteSubtitle": "Projects, goals, prerequisites",
+  "sourceLink": "Official Thesis Topics Page",
+  "searchPlaceholder": "Search by keyword, skill, technology...",
+  "allSections": "All sections",
+  "allDifficulties": "All difficulties",
+  "reset": "Reset",
+  "back": "Back to list",
+  "copyLink": "Copy link",
+  "goal": "Goal",
+  "tools": "Tools and required skills",
+  "about": "Overview",
+  "footer": "Static site on GitHub Pages • JSON data • IT/EN",
+  "difficultyLabel": "Difficulty",
+  "sectionLabel": "Section",
+  "statusTaken": "Assigned",
+  "onlyAvailable": "Show available only"
+
+}

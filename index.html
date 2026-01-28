@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Temi di Tesi</title>
+  <meta name="description" content="Elenco progetti di tesi, con obiettivi, prerequisiti e difficoltà. IT/EN." />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header class="wrap header">
+    <div class="brand">
+      <div class="brand__title" id="t_siteTitle">Temi di tesi</div>
+      <div class="brand__subtitle" id="t_siteSubtitle">Progetti disponibili, obiettivi e prerequisiti</div>
+    </div>
+
+    <div class="header__actions">
+      <button class="btn" id="langToggle" type="button" aria-label="Switch language">EN</button>
+      <a class="btn btn--ghost" id="t_sourceLink" href="https://sites.google.com/unical.it/iannigbtemitesi/home-page" target="_blank" rel="noreferrer">Pagina Ufficiale Temi di Tesi</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="controls" aria-label="Filtri">
+      <input id="q" class="input" type="search" placeholder="Cerca per keyword, skill, tecnologia..." />
+      <select id="section" class="select" aria-label="Sezione">
+        <option value="all">Tutte le sezioni</option>
+      </select>
+      <select id="difficulty" class="select" aria-label="Difficoltà">
+        <option value="all">Tutte le difficoltà</option>
+        <option value="1">🔴</option>
+        <option value="2">🔴🔴</option>
+        <option value="3">🔴🔴🔴</option>
+        <option value="4">🔴🔴🔴🔴</option>
+        <option value="5">🔴🔴🔴🔴🔴</option>
+      </select>
+      <label class="check">
+        <input id="onlyAvailable" type="checkbox" />
+        <span id="t_onlyAvailable">Mostra solo disponibili</span>
+      </label>
+      <button id="clear" class="btn btn--ghost" type="button">Reset</button>
+    </section>
+
+    <section id="listView" class="grid" aria-label="Elenco progetti"></section>
+
+    <section id="detailView" class="detail hidden" aria-label="Dettaglio progetto">
+      <div class="detail__top">
+        <a class="link" href="#" id="backLink">← <span id="t_back">Torna all'elenco</span></a>
+        <button class="btn btn--ghost" id="copyLink" type="button">Copia link</button>
+      </div>
+
+      <h1 id="d_title" class="detail__title"></h1>
+      <div class="detail__meta">
+        <span class="chip" id="d_section"></span>
+        <span class="chip" id="d_difficulty"></span>
+      </div>
+
+      <div class="detail__block">
+        <h2 id="t_goal">Obiettivo</h2>
+        <p id="d_goal"></p>
+      </div>
+
+      <div class="detail__block">
+        <h2 id="t_tools">Strumenti e conoscenze richieste</h2>
+        <ul id="d_tools" class="bullets"></ul>
+      </div>
+
+      <div class="detail__block">
+        <h2 id="t_about">Di cosa si tratta</h2>
+        <p id="d_about"></p>
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="wrap footer">
+    <span class="muted" id="t_footer">Sito statico su GitHub Pages • Dati in JSON • IT/EN</span>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

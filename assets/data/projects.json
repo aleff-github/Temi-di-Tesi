@@ -1,0 +1,400 @@
+[
+  {
+    "slug": "anti-duckyscript",
+    "section": {
+      "it": "Cyber security",
+      "en": "Cyber security"
+    },
+    "title": {
+      "it": "Sistema di sicurezza anti DuckyScript",
+      "en": "Anti-DuckyScript security system"
+    },
+    "goal": {
+      "it": "Progettare e implementare un meccanismo software di mitigazione contro attacchi tramite dispositivi HID che emulano tastiera (es. USB Rubber Ducky / DuckyScript). Il sistema deve rilevare condizioni sospette (es. inserimento di un nuovo dispositivo, sequenze di input anomale o hotkey ad alto rischio) e applicare contromisure tramite policy configurabili (es. blocco selettivo delle hotkey, quarantena temporanea dell'input, richiesta di verifica della presenza umana tramite UI), producendo log e evidenze utili alla valutazione e all'analisi forense. La soluzione va validata in laboratorio con test controllati e metriche di efficacia (tasso di blocco, falsi positivi, tempo di rilevazione, impatto sull'usabilità).",
+      "en": "Design and implement a software mitigation mechanism against attacks carried out through keyboard-emulating HID devices (e.g., USB Rubber Ducky / DuckyScript). The system should detect suspicious conditions (e.g., newly plugged devices, anomalous input behavior, or high-risk hotkey sequences) and enforce configurable policies (e.g., selective hotkey blocking, temporary input quarantine, human-presence verification through UI challenges), producing logs and evidence useful for evaluation and basic forensic analysis. The solution must be validated in a controlled lab setup with measurable effectiveness metrics (block rate, false positives, time-to-detect, usability impact)."
+    },
+    "tools": {
+      "it": [
+        "API del sistema operativo (gestione eventi device e input)",
+        "Gestione GUI (popup/challenge sempre in primo piano)",
+        "Python (proposta)"
+      ],
+      "en": [
+        "Operating system APIs (device and input event handling)",
+        "GUI handling (always-on-top popups/challenges)",
+        "Python (proposed)"
+      ]
+    },
+    "about": {
+      "it": "L'obiettivo è quello di <strong>studiare</strong> la superficie d'attacco dei dispositivi HID che emulano tastiera (<i>fiducia implicita del canale \"tastiera\"</i>) e <strong>sviluppare</strong> un sistema difensivo basato su <strong>trigger</strong> e <strong>policy</strong>. <i>Trigger possibili:</i> <ul><li><strong>inserimento</strong> di un nuovo dispositivo esterno</li><li><strong>pattern</strong> di input sospetti (<i>velocità non umana</i>, <i>burst regolari</i>)</li><li><strong>combinazioni</strong> comuni ad alto rischio (<i>Win+R</i>, <i>apertura terminale</i>, <i>paste massivo</i>)</li></ul> <i>Azioni/policy:</i> <ul><li><strong>blocco selettivo</strong> delle hotkey</li><li><strong>quarantena temporanea</strong> della tastiera</li><li><strong>verifica di presenza umana</strong> tramite UI</li></ul> <i>Esempi di idee (non vincolanti) per la verifica utente:</i> <ul><li><strong>Popup di conferma</strong> (\"Stai realmente utilizzando tu il computer?\") con azione via mouse entro un <strong>timer casuale</strong> (es. <i>3-10 secondi</i>) e, in assenza di risposta, <strong>disabilitazione temporanea</strong> dell'input da tastiera oppure attentedere randomicamente X secondi prima di permettere di cliccare \"Si\"</li><li><strong>All'inserimento</strong> di un nuovo dispositivo, popup con <strong>4 cifre casuali</strong> da riscrivere per <strong>sbloccare</strong> l'input e impedire l'esecuzione immediata di payload automatizzati</li></ul> <i>Nota:</i> questi esempi sono solo <strong>spunti</strong>; lo studente può sviluppare la soluzione come preferisce, migliorando trigger, feature di rilevazione, policy e challenge (<i>whitelist dispositivi fidati</i>, <i>guard window</i> dopo il plug-in, <i>blocco graduale</i>), motivando le scelte con <strong>test controllati</strong> e metriche (<i>tempo di reazione</i>, <i>impatto UX</i>) e documentazione completa.",
+      "en": "The goal is to <strong>study</strong> the attack surface of keyboard-emulating HID devices (<i>implicit trust in the \"keyboard\" channel</i>) and <strong>develop</strong> a defensive system based on <strong>triggers</strong> and <strong>policies</strong>. <i>Possible triggers:</i> <ul><li><strong>plug-in</strong> of a new external device</li><li><strong>suspicious</strong> input patterns (<i>non-human speed</i>, <i>regular bursts</i>)</li><li><strong>common</strong> high-risk combinations (<i>Win+R</i>, <i>terminal opening</i>, <i>mass paste</i>)</li></ul> <i>Actions/policies:</i> <ul><li><strong>selective blocking</strong> of hotkeys</li><li><strong>temporary quarantine</strong> of the keyboard</li><li><strong>human presence verification</strong> via UI</li></ul> <i>Example ideas (non-binding) for user verification:</i> <ul><li><strong>Confirmation popup</strong> (\"Are you really using the computer?\") requiring a mouse action within a <strong>random timer</strong> (e.g., <i>3-10 seconds</i>) and, if no response is provided, <strong>temporary disabling</strong> of keyboard input; alternatively, wait a random X seconds before allowing the user to click \"Yes\"</li><li><strong>Upon plugging in</strong> a new device, show a popup with <strong>4 random digits</strong> to retype in order to <strong>unlock</strong> input and prevent the immediate execution of automated payloads</li></ul> <i>Note:</i> these examples are only <strong>starting points</strong>; the student may develop the solution as they see fit, improving triggers, detection features, policies, and challenge mechanisms (<i>trusted-device whitelist</i>, <i>post-plug-in guard window</i>, <i>progressive blocking</i>), justifying the choices through <strong>controlled testing</strong> and metrics (<i>response time</i>, <i>UX impact</i>) and complete documentation."
+    },
+    "difficulty": 4,
+    "taken": false
+  },
+  {
+    "slug": "vscode-torrc-extension",
+    "section": {
+      "it": "Cyber security",
+      "en": "Cyber security"
+    },
+    "title": {
+      "it": "Estensione VSCode/VSCodium per file di configurazione torrc",
+      "en": "VSCode/VSCodium extension for torrc configuration files"
+    },
+    "goal": {
+      "it": "Progettare e sviluppare un'estensione per VSCode/VSCodium che migliori l'editing dei file <strong>torrc</strong> (configurazione di Tor) fornendo <strong>syntax highlighting</strong>, <strong>autocompletamento</strong> e <strong>diagnostica</strong> (lint) per ridurre errori di configurazione e velocizzare la scrittura di configurazioni corrette e coerenti.",
+      "en": "Design and build a VSCode/VSCodium extension that improves <strong>torrc</strong> (Tor configuration) editing by providing <strong>syntax highlighting</strong>, <strong>autocomplete</strong>, and <strong>diagnostics</strong> (linting) to reduce configuration errors and speed up writing correct and consistent configurations."
+    },
+    "tools": {
+      "it": [
+        "JavaScript/TypeScript (medio-basso)",
+        "SDK estensioni VSCode/VSCodium",
+        "Nozioni di torrc"
+      ],
+      "en": [
+        "JavaScript/TypeScript (mid-low)",
+        "VSCode/VSCodium extension API",
+        "torrc basics"
+      ]
+    },
+    "about": {
+      "it": "L'obiettivo è realizzare un'estensione focalizzata sui file <strong>torrc</strong> che supporti lo sviluppatore nella scrittura e manutenzione della configurazione di Tor. L'estensione deve riconoscere la sintassi tipica <i>Direttiva Valore</i>, gestire <i>commenti</i> e varianti di formattazione, e offrire funzionalità mirate per prevenire errori comuni. <i>Funzionalità tecniche attese:</i> <ul><li><strong>Syntax highlighting</strong> tramite grammatiche TextMate: direttive, valori, numeri, path, commenti, stringhe e keyword rilevanti.</li><li><strong>Autocompletamento</strong> (CompletionItemProvider) per direttive torrc e valori frequenti, con <strong>snippet</strong> (es. template per configurazioni tipiche) e descrizioni brevi.</li><li><strong>Hover / docs inline</strong>: documentazione contestuale quando il cursore è su una direttiva, includendo una spiegazione sintetica e indicazioni sui valori ammessi.</li><li><strong>Lint / diagnostica</strong> (Diagnostics): segnalazione di direttive sconosciute, parametri mancanti, valori fuori formato e possibili conflitti basilari tra opzioni; evidenziazione errori con severity e messaggi chiari.</li><li><strong>Validazioni semplici</strong>: controllo di pattern (es. numeri/porte, path assoluti/relativi, boolean, liste), e suggerimenti di correzione rapidi.</li></ul> <i>Nota:</i> il progetto può essere sviluppato in modo incrementale scegliendo un sottoinsieme di feature, oppure estendendolo con un piccolo <strong>parser</strong> per analisi più affidabili. L'obiettivo finale è fornire un tool pratico che riduca configurazioni errate, aumenti la produttività e renda più trasparente la semantica delle opzioni torrc direttamente nell'editor.",
+      "en": "The goal is to build a VSCode/VSCodium extension focused on <strong>torrc</strong> files that helps developers write and maintain Tor configuration. The extension should recognize the typical <i>Directive Value</i> syntax, handle <i>comments</i> and formatting variants, and provide targeted features to prevent common mistakes. <i>Expected technical features:</i> <ul><li><strong>Syntax highlighting</strong> via TextMate grammars: directives, values, numbers, paths, comments, strings, and relevant keywords.</li><li><strong>Autocomplete</strong> (CompletionItemProvider) for torrc directives and common values, with <strong>snippets</strong> (e.g., templates for typical setups) and short descriptions.</li><li><strong>Hover / inline docs</strong>: contextual documentation when hovering a directive, including a concise explanation and allowed-value guidance.</li><li><strong>Linting / diagnostics</strong> (Diagnostics): report unknown directives, missing parameters, malformed values, and basic option conflicts; highlight issues with severity and clear messages.</li><li><strong>Simple validations</strong>: pattern checks (e.g., numbers/ports, absolute/relative paths, booleans, lists) and quick-fix suggestions.</li></ul> <i>Note:</i> the project can be developed incrementally by implementing a subset of features, or extended with a small <strong>parser</strong> for more reliable analysis. The end goal is a practical tool that reduces misconfigurations, improves productivity, and makes torrc option semantics visible directly inside the editor."
+    },
+    "difficulty": 2,
+    "taken": false
+  },
+  {
+    "slug": "webapp-torrc-builder",
+    "section": {
+      "it": "Cyber security",
+      "en": "Cyber security"
+    },
+    "title": {
+      "it": "WebApp per la creazione del file di configurazione torrc per Tor",
+      "en": "Web app to generate a Tor torrc configuration file"
+    },
+    "goal": {
+      "it": "Realizzare una webapp che guidi l'utente nella creazione di un file <strong>torrc</strong> <strong>coerente</strong> e <strong>valido</strong>, attraverso una procedura a step con <strong>validazioni</strong> e generazione finale del file scaricabile per diversi scenari (<i>client personale</i>, <i>relay</i>, <i>bridge</i>).",
+      "en": "Build a web app that guides users through generating a <strong>consistent</strong> and <strong>valid</strong> <strong>torrc</strong> file, using a step-by-step flow with <strong>validations</strong> and a final downloadable output for multiple scenarios (<i>personal client</i>, <i>relay</i>, <i>bridge</i>)."
+    },
+    "tools": {
+      "it": [
+        "Python (es. Flask)",
+        "Nozioni di torrc"
+      ],
+      "en": [
+        "Python (e.g., Flask)",
+        "torrc basics"
+      ]
+    },
+    "about": {
+      "it": "L'obiettivo è sviluppare una webapp che funzioni come <strong>wizard</strong> per la configurazione di Tor, aiutando l'utente a produrre un file <strong>torrc</strong> pronto all'uso riducendo errori di sintassi e incoerenze tra opzioni. La webapp deve offrire una UI a step che raccolga i parametri principali e applichi controlli di coerenza prima di generare l'output. <br><i>Flusso e funzionalità attese:</i> <ul><li><strong>Scelta dello scenario</strong>: <i>client personale</i>, <i>relay</i>, <i>bridge</i> (con campi e opzioni che cambiano in base allo scenario).</li><li><strong>Validazione input</strong>: controllo di formati e vincoli (es. numeri e porte, path, boolean, liste), campi obbligatori e valori ammessi.</li><li><strong>Controlli di coerenza</strong>: prevenzione di combinazioni incompatibili o incomplete, e segnalazione di possibili errori di configurazione.</li><li><strong>Output torrc</strong>: generazione del file come testo con sezione commentata e possibilità di <strong>download</strong> o copia rapida.</li><li><strong>Preset</strong> (opzionale): profili precompilati per casi d'uso comuni e possibilità di modificarli.</li><li><strong>Spiegazioni</strong> (opzionale): brevi descrizioni inline per le opzioni, con <strong>best practice</strong> e avvisi su scelte rischiose o non consigliate.</li></ul> <i>Nota:</i> il progetto può rimanere leggero (wizard + validazioni + generazione file) oppure essere esteso con una sezione di <strong>preview</strong> che evidenzia le direttive attive e spiega l'effetto delle scelte dell'utente. L'obiettivo finale è un tool pratico che renda più semplice creare configurazioni Tor corrette e riproducibili.",
+      "en": "The goal is to develop a web app that acts as a <strong>wizard</strong> for Tor configuration, helping users produce a ready-to-use <strong>torrc</strong> file while reducing syntax errors and inconsistent option combinations. The web app should provide a step-by-step UI that collects key parameters and enforces consistency checks before generating the output. <i>Expected flow and features:</i> <ul><li><strong>Scenario selection</strong>: <i>personal client</i>, <i>relay</i>, <i>bridge</i> (with fields and options adapting to the chosen scenario).</li><li><strong>Input validation</strong>: check formats and constraints (e.g., numbers and ports, paths, booleans, lists), required fields, and allowed values.</li><li><strong>Consistency checks</strong>: prevent incompatible or incomplete combinations and warn about likely misconfigurations.</li><li><strong>torrc output</strong>: generate the final file as text (optionally with comments) and provide <strong>download</strong> or quick copy.</li><li><strong>Presets</strong> (optional): pre-filled profiles for common use cases with the ability to customize them.</li><li><strong>Explanations</strong> (optional): short inline descriptions for options, with <strong>best practices</strong> and warnings about risky or not recommended choices.</li></ul> <i>Note:</i> the project can remain lightweight (wizard + validations + file generation) or be extended with a <strong>preview</strong> section that highlights active directives and explains the effect of the user's choices. The final goal is a practical tool that makes it easier to produce correct and reproducible Tor configurations."
+    },
+    "difficulty": 2,
+    "taken": false
+  },
+  {
+    "slug": "webapp-torrc-interpreter",
+    "section": {
+      "it": "Cyber security",
+      "en": "Cyber security"
+    },
+    "title": {
+      "it": "WebApp per l'interpretazione e l'analisi del file di configurazione torrc",
+      "en": "Web app to interpret and analyze a torrc configuration file"
+    },
+    "goal": {
+      "it": "Sviluppare una webapp che permetta di <strong>caricare</strong> un file <strong>torrc</strong> e produrre un'analisi automatica con <strong>parsing</strong>, <strong>validazione</strong> e report: <strong>errori di sintassi</strong>, <strong>problemi semantici probabili</strong> e una sezione <strong>FAQ</strong> generata in base alle direttive effettivamente presenti e allo scenario (client/relay/bridge).",
+      "en": "Build a web app that allows users to <strong>upload</strong> a <strong>torrc</strong> file and produce an automated analysis with <strong>parsing</strong>, <strong>validation</strong>, and a structured report: <strong>syntax errors</strong>, <strong>likely semantic issues</strong>, and an <strong>FAQ</strong> section generated from the directives actually found in the configuration and the detected scenario (client/relay/bridge)."
+    },
+    "tools": {
+      "it": [
+        "Python (es. Flask)",
+        "Parsing/validazione",
+        "Nozioni di torrc"
+      ],
+      "en": [
+        "Python (e.g., Flask)",
+        "Parsing/validation",
+        "torrc basics"
+      ]
+    },
+    "about": {
+      "it": "L'obiettivo è creare una webapp che trasformi un file <strong>torrc</strong> in un <strong>report strutturato</strong> e comprensibile, aiutando a individuare errori e configurazioni potenzialmente problematiche. La webapp deve implementare un <strong>parser</strong> capace di riconoscere la forma tipica <i>Direttiva Valore</i>, gestire <i>commenti</i>, righe vuote, e direttive ripetute, e costruire una rappresentazione interna della configurazione per applicare regole di controllo. <i>Funzionalità tecniche attese:</i> <ul><li><strong>Parsing robusto</strong>: normalizzazione whitespace, gestione di più occorrenze della stessa direttiva, e raccolta di metadati (numero di riga, direttiva, valore).</li><li><strong>Validazione sintattica</strong>: individuazione di righe malformate, direttive sconosciute/non supportate (in base a una lista), valori mancanti e formati errati (es. numeri, porte, boolean, liste, path).</li><li><strong>Analisi semantica</strong>: regole che evidenziano incoerenze o rischi probabili (es. opzioni in conflitto, direttive richieste mancanti per uno scenario, combinazioni incomplete, valori potenzialmente insicuri o non consigliati).</li><li><strong>Classificazione scenario</strong>: inferenza di <i>client</i>/<i>relay</i>/<i>bridge</i> in base alle direttive rilevate, per adattare controlli e spiegazioni.</li><li><strong>Report</strong>: output leggibile con sezioni per <strong>errori</strong>, <strong>warn</strong> e <strong>suggerimenti</strong>, includendo per ogni finding la riga coinvolta, una spiegazione sintetica e una proposta di correzione.</li><li><strong>FAQ generate</strong>: elenco di domande/risposte \"mirate\" derivate dalle opzioni presenti (es. cosa fa una direttiva, perché viene segnalata, cosa cambia se si modifica un valore), per rendere l'analisi più didattica.</li></ul> <i>Nota:</i> le regole possono essere implementate inizialmente come controlli semplici (pattern e vincoli), e poi evolvere verso un set più ricco e modulare. L'obiettivo finale è un tool pratico che aiuti a diagnosticare rapidamente configurazioni torrc e a produrre indicazioni utili per correggerle in modo consapevole.",
+      "en": "The goal is to create a web app that turns a <strong>torrc</strong> file into a <strong>structured</strong>, human-readable report, helping users spot errors and potentially problematic settings. The web app should implement a <strong>parser</strong> that recognizes the typical <i>Directive Value</i> format, handles <i>comments</i>, empty lines, and repeated directives, and builds an internal representation of the configuration to apply validation rules. <i>Expected technical features:</i> <ul><li><strong>Robust parsing</strong>: whitespace normalization, handling multiple occurrences of the same directive, and collecting metadata (line number, directive, value).</li><li><strong>Syntax validation</strong>: detect malformed lines, unknown/unsupported directives (based on a curated list), missing values, and invalid formats (e.g., numbers, ports, booleans, lists, paths).</li><li><strong>Semantic analysis</strong>: rules that highlight likely inconsistencies or risks (e.g., conflicting options, missing required directives for a scenario, incomplete combinations, potentially unsafe or not recommended values).</li><li><strong>Scenario classification</strong>: infer <i>client</i>/<i>relay</i>/<i>bridge</i> based on detected directives to tailor checks and explanations.</li><li><strong>Report</strong>: readable output with separate sections for <strong>errors</strong>, <strong>warnings</strong>, and <strong>recommendations</strong>, including for each finding the affected line, a concise explanation, and a suggested remediation.</li><li><strong>Generated FAQs</strong>: a targeted Q&A list derived from the options present (e.g., what a directive does, why it is flagged, what changes when adjusting a value) to make the analysis more educational.</li></ul> <i>Note:</i> rules can start simple (pattern/constraint checks) and evolve into a richer, modular rule set. The end goal is a practical tool for quickly diagnosing torrc configurations and providing actionable, explainable remediation guidance."
+    },
+    "difficulty": 3,
+    "taken": false
+  },
+  {
+    "slug": "tropea-project-local-app",
+    "section": {
+      "it": "Cyber security",
+      "en": "Cyber security"
+    },
+    "title": {
+      "it": "Conversione di TropeaProject da estensione browser a applicazione desktop locale",
+      "en": "Convert TropeaProject from a browser extension to a local desktop app"
+    },
+    "goal": {
+      "it": "Eseguire il <strong>porting</strong> di TropeaProject da estensione browser a <strong>app desktop locale</strong>, replicando le funzionalità di <strong>fine-tuning della rete Tor/Tor Browser</strong> (modifica guidata di opzioni <strong>torrc</strong> legate al circuito) e riducendo la dipendenza da WebExtension e da componenti \"ad-hoc\" esterni. L'obiettivo è ottenere un software <strong>installabile</strong>, <strong>manutenibile</strong> e <strong>testabile</strong> che consenta di applicare configurazioni in modo trasparente e reversibile.",
+      "en": "Perform the <strong>porting</strong> of TropeaProject from a browser extension to a <strong>local desktop app</strong>, replicating its <strong>Tor/Tor Browser fine-tuning</strong> features (guided editing of <strong>torrc</strong> options that influence circuit selection) while reducing reliance on the WebExtension runtime and external \"ad-hoc\" components. The goal is an <strong>installable</strong>, <strong>maintainable</strong>, and <strong>testable</strong> application that applies configurations in a transparent and reversible way."
+    },
+    "tools": {
+      "it": [
+        "JavaScript/Node.js (medio-basso)",
+        "Gestione filesystem (lettura/scrittura config)",
+        "UI desktop (es. Electron oppure alternativa equivalente)"
+      ],
+      "en": [
+        "JavaScript/Node.js (mid-low)",
+        "Filesystem handling (read/write config)",
+        "Desktop UI (e.g., Electron or equivalent alternative)"
+      ]
+    },
+    "about": {
+      "it": "TropeaProject nasce come estensione Firefox che, tramite un componente locale in Node.js, permette all'utente di modificare in modo guidato alcune impostazioni che influenzano il <strong>circuit building</strong> di Tor Browser (ad es. scelta dei paesi per nodi di ingresso/uscita e relative restrizioni). In questa tesi si richiede di trasformare tale architettura in una <strong>app desktop</strong> autonoma: la UI non vive più nel browser e la logica non dipende dalle API delle estensioni. <br><br><i>Obiettivi tecnici principali:</i> <ul><li><strong>Replica delle feature core</strong> di TropeaProject con una UI locale: gestione guidata di direttive torrc legate a <i>EntryNodes</i>, <i>ExitNodes</i>, <i>StrictNodes</i> e regole di esclusione (es. esclusione nodi per origine/uscita, esclusione nodi non geolocalizzabili), mantenendo un approccio \"user-friendly\". </li><li><strong>Gestione configurazione</strong>: lettura/scrittura dei file di configurazione pertinenti (con backup automatico), generazione di una configurazione coerente, e possibilità di <strong>reset</strong>/rollback per ripristinare lo stato precedente. </li><li><strong>Persistenza e profili</strong>: storage locale di preset e profili (export/import), con validazioni (es. formato dei country code, liste, flag) e controlli di coerenza tra opzioni.</li><li><strong>Architettura modulare</strong>: separazione tra UI, livello \"domain\" (modello config e regole), e livello I/O (filesystem), così da rendere il progetto <strong>testabile</strong> (unit test su parser/generatore e regole) e manutenibile.</li><li><strong>Logging e diagnostica</strong>: log degli interventi (cosa è stato cambiato, quando, con quale profilo), più messaggi di errore leggibili per l'utente.</li></ul> <i>Nota:</i> le liste di direttive e le regole possono partire da un sottoinsieme \"minimo\" (feature core) e poi essere estese. Le idee di UI e flusso sono libere: l'obiettivo è dimostrare un porting corretto e robusto, non copiare pixel-per-pixel l'estensione.",
+      "en": "TropeaProject started as a Firefox extension that, through a local Node.js component, lets users guidedly change settings that influence Tor Browser <strong>circuit building</strong> (e.g., selecting countries for entry/exit nodes and related constraints). This thesis turns that architecture into a standalone <strong>desktop app</strong>: the UI no longer lives in the browser, and the logic does not rely on extension APIs. <br><br><i>Main technical goals:</i> <ul><li><strong>Reproduce the core features</strong> with a local UI: guided handling of torrc directives related to <i>EntryNodes</i>, <i>ExitNodes</i>, <i>StrictNodes</i>, and exclusion rules (e.g., excluding nodes by origin/exit, excluding non-geolocatable nodes), while keeping a user-friendly workflow. </li><li><strong>Configuration management</strong>: read/write the relevant configuration files (with automatic backups), generate a consistent configuration, and provide <strong>reset</strong>/rollback to restore the previous state. </li><li><strong>Persistence and profiles</strong>: local storage for presets and profiles (export/import), with validation (e.g., country code formats, lists, flags) and basic consistency checks across options.</li><li><strong>Modular architecture</strong>: clear separation between UI, domain layer (config model and rules), and I/O layer (filesystem), to make the project <strong>testable</strong> (unit tests for parser/generator and rules) and maintainable.</li><li><strong>Logging and diagnostics</strong>: track changes (what changed, when, with which profile) and provide user-friendly error messages.</li></ul> <i>Note:</i> directive lists and rules can start with a minimal core and then be extended. UI and flow are flexible: the goal is a correct and robust porting, not a pixel-perfect clone of the extension."
+    },
+    "difficulty": 2,
+    "taken": false
+  },
+  {
+    "slug": "thunderbird-iban-mitm",
+    "section": {
+      "it": "Cyber security",
+      "en": "Cyber security"
+    },
+    "title": {
+      "it": "Add-on Thunderbird per mitigazione attacchi su IBAN manomessi",
+      "en": "Thunderbird add-on to mitigate attacks involving tampered IBANs"
+    },
+    "goal": {
+      "it": "Sviluppare un add-on per Thunderbird che <strong>analizzi</strong> il contenuto delle email, <strong>rilevi</strong> gli IBAN e calcoli un <strong>punteggio di rischio</strong> basato su controlli <i>formali</i> e <i>di contesto</i>, mostrando un <strong>alert chiaro</strong> all'utente per ridurre il rischio di frodi (es. sostituzione/manomissione dell'IBAN in richieste di pagamento).",
+      "en": "Build a Thunderbird add-on that <strong>inspects</strong> email content, <strong>detects</strong> IBANs, and computes a <strong>risk score</strong> using <i>formal</i> and <i>contextual</i> checks, showing a <strong>clear user alert</strong> to reduce fraud risk (e.g., IBAN replacement/tampering in payment requests)."
+    },
+    "tools": {
+      "it": [
+        "JavaScript",
+        "Framework estensioni Thunderbird (MailExtensions)",
+        "Parsing testo/HTML e validazione"
+      ],
+      "en": [
+        "JavaScript",
+        "Thunderbird extensions framework (MailExtensions)",
+        "Text/HTML parsing and validation"
+      ]
+    },
+    "about": {
+      "it": "La tesi mira a realizzare una pipeline completa <strong>estrazione -> normalizzazione -> validazione -> scoring -> UI</strong> direttamente nel client di posta. Il focus non è \"bloccare\" i pagamenti, ma <strong>rendere evidente</strong> quando un IBAN in email appare sospetto, riducendo errori umani e truffe di tipo <i>invoice/email tampering</i>. <i>Componenti tecnici richiesti:</i> <ul><li><strong>Estrazione IBAN</strong>: rilevamento di IBAN in testo e HTML (regex robusta), gestione di separatori (spazi, trattini) e casi con più IBAN nella stessa email.</li><li><strong>Normalizzazione</strong>: rimozione spazi/separatori, upper-case, gestione di caratteri strani (es. spazi non standard), e produzione di una forma canonica per confronti.</li><li><strong>Controlli formali</strong>: verifica country code e lunghezza attesa, controllo dei <strong>check digits</strong> con algoritmo <i>MOD 97</i>, rilevazione di pattern chiaramente invalidi.</li><li><strong>Controlli di contesto</strong>: regole che aumentano il rischio quando l'IBAN appare \"nuovo\" rispetto a messaggi precedenti dello stesso mittente/thread, quando cambia improvvisamente in una conversazione, quando compare insieme a frasi tipiche di urgenza/pagamento, o quando il dominio del mittente non è coerente con quanto atteso.</li><li><strong>Diff e confronto</strong>: se l'email contiene più IBAN, evidenziare differenze (cosa cambia e dove) e segnalare sostituzioni sospette (es. stesso testo ma IBAN differente).</li><li><strong>UI e alerting</strong>: visualizzazione non invasiva ma evidente (banner/popup) con <strong>livello di rischio</strong> e spiegazione breve  \"perché\" (regole attivate), più azioni rapide (es. copia IBAN normalizzato, mostra tutti gli IBAN trovati,  \"segna come affidabile\" per creare una whitelist locale).</li><li><strong>Persistenza locale</strong>: memorizzazione di preferenze/whitelist e storico minimo per confronti (es. per mittente/dominio/thread), con attenzione a privacy e semplicità.</li></ul> <i>Nota:</i> le regole possono partire semplici e diventare più sofisticate (es. scoring pesato, riduzione falsi positivi). L'obiettivo finale è un add-on <strong>spiegabile</strong> e <strong>pratico</strong>, che aiuti l'utente a intercettare in tempo un IBAN sospetto senza richiedere competenze tecniche avanzate.",
+      "en": "This thesis aims to implement a complete <strong>extraction -> normalization -> validation -> scoring -> UI</strong> pipeline directly inside the mail client. The goal is not to  \"block\" payments, but to <strong>make it obvious</strong> when an IBAN in an email looks suspicious, reducing human error and <i>invoice/email tampering</i> fraud. <i>Required technical components:</i> <ul><li><strong>IBAN extraction</strong>: detect IBANs in plain text and HTML (robust regex), handle separators (spaces, hyphens), and support multiple IBANs within the same email.</li><li><strong>Normalization</strong>: remove spaces/separators, upper-case, handle  \"weird\" characters (e.g., non-standard spaces), and produce a canonical form for comparisons.</li><li><strong>Formal checks</strong>: verify country code and expected length, validate <strong>check digits</strong> using the <i>MOD 97</i> algorithm, and flag clearly invalid patterns.</li><li><strong>Context checks</strong>: rules that raise risk when the IBAN appears  \"new\" compared to previous messages from the same sender/thread, changes unexpectedly within a conversation, appears alongside urgency/payment language, or when the sender domain is inconsistent with expectations.</li><li><strong>Diff and comparison</strong>: if multiple IBANs are present, highlight differences (what changed and where) and flag suspicious substitutions (e.g., same text but a different IBAN).</li><li><strong>UI and alerting</strong>: a clear but non-intrusive banner/popup with a <strong>risk level</strong> and a short explanation of  \"why\" (triggered rules), plus quick actions (e.g., copy normalized IBAN, show all detected IBANs,  \"mark as trusted\" to build a local whitelist).</li><li><strong>Local persistence</strong>: store preferences/whitelist and minimal history for comparisons (e.g., by sender/domain/thread), with attention to privacy and simplicity.</li></ul> <i>Note:</i> rules can start simple and evolve (e.g., weighted scoring, false-positive reduction). The final objective is an <strong>explainable</strong> and <strong>practical</strong> add-on that helps users catch suspicious IBANs in time without requiring advanced technical skills."
+    },
+    "difficulty": 3,
+    "taken": false
+  },
+  {
+    "slug": "pgp-keyserver-webapp",
+    "section": {
+      "it": "Cyber security",
+      "en": "Cyber security"
+    },
+    "title": {
+      "it": "WebApp per la gestione di chiavi pubbliche PGP (stile keyserver)",
+      "en": "Web app to manage PGP public keys (keyserver-like)"
+    },
+    "goal": {
+      "it": "Realizzare una webapp che permetta la <strong>pubblicazione</strong> e la <strong>ricerca</strong> di <strong>chiavi pubbliche OpenPGP</strong>: upload di chiavi in formato <i>ASCII-armored</i>, estrazione dei metadati (fingerprint, user IDs, algoritmi), indicizzazione e ricerca per <strong>keyword</strong>, <strong>email</strong> o <strong>fingerprint</strong>, con output consultabile e scaricabile in modo sicuro.",
+      "en": "Build a web app that enables <strong>publishing</strong> and <strong>searching</strong> <strong>OpenPGP public keys</strong>: upload keys in <i>ASCII-armored</i> format, extract metadata (fingerprint, user IDs, algorithms), index and search by <strong>keyword</strong>, <strong>email</strong>, or <strong>fingerprint</strong>, and provide a secure, browsable and downloadable output."
+    },
+    "tools": {
+      "it": [
+        "Python (medio-basso)",
+        "Database (es. SQLite/PostgreSQL)",
+        "Nozioni PGP/OpenPGP di base"
+      ],
+      "en": [
+        "Python (mid-low)",
+        "Database (e.g., SQLite/PostgreSQL)",
+        "Basic PGP/OpenPGP concepts"
+      ]
+    },
+    "about": {
+      "it": "L'obiettivo è costruire un <strong>mini keyserver</strong> moderno, ispirato a servizi storici come <i>pgp.mit.edu</i>, con un flusso chiaro di <strong>upload</strong>, <strong>validazione</strong>, <strong>indicizzazione</strong> e <strong>ricerca</strong> delle chiavi pubbliche. La webapp deve gestire esclusivamente contenuti pubblici (chiavi pubbliche) e fornire un'interfaccia semplice per consultare e recuperare una chiave tramite fingerprint o identificativi. <i>Componenti tecnici attesi:</i> <ul><li><strong>Upload</strong>: form per incollare o caricare una chiave <i>ASCII-armored</i>, con limiti di dimensione e controlli di formato.</li><li><strong>Parsing e metadati</strong>: estrazione di fingerprint, key ID, algoritmi, date (creazione/scadenza se disponibili), e lista di <i>User ID</i> (nome/email) per indicizzazione.</li><li><strong>Database</strong>: salvataggio della chiave e dei metadati in tabelle normalizzate (chiavi, user IDs, fingerprint), con vincoli di unicità sul fingerprint.</li><li><strong>Ricerca</strong>: endpoint e UI per ricerca per <strong>keyword</strong>, <strong>email</strong> o <strong>fingerprint</strong>, con risultati ordinati e pagina di dettaglio.</li><li><strong>Output</strong>: pagina \"view\" della chiave e download della chiave in formato originale, includendo fingerprint e informazioni essenziali.</li><li><strong>Sicurezza e robustezza</strong>: sanificazione input/output (evitare XSS), rate limiting base, gestione sicura dei file caricati (preferendo storage come testo), e logging minimale degli eventi.</li></ul> <i>Nota:</i> il progetto può essere volutamente semplice (upload + ricerca + download), ma può essere esteso con funzioni aggiuntive come verifica che la chiave sia effettivamente <strong>pubblica</strong>, deduplicazione avanzata, paginazione, o API \"machine-readable\" per integrazioni. L'obiettivo finale è un servizio didattico e pratico che mostri come gestire in modo corretto e sicuro la pubblicazione di chiavi pubbliche PGP.",
+      "en": "The goal is to build a modern <strong>mini keyserver</strong>, inspired by historical services like <i>pgp.mit.edu</i>, with a clear flow for <strong>upload</strong>, <strong>validation</strong>, <strong>indexing</strong>, and <strong>search</strong> of public keys. The web app should handle only public content (public keys) and provide a simple interface to browse and retrieve a key by fingerprint or identifiers. <i>Expected technical components:</i> <ul><li><strong>Upload</strong>: UI to paste or upload an <i>ASCII-armored</i> key, with size limits and format checks.</li><li><strong>Parsing and metadata</strong>: extract fingerprint, key ID, algorithms, dates (creation/expiration if present), and <i>User ID</i> entries (name/email) for indexing.</li><li><strong>Database</strong>: store the key and metadata in normalized tables (keys, user IDs, fingerprints), with uniqueness constraints on fingerprints.</li><li><strong>Search</strong>: endpoints and UI to search by <strong>keyword</strong>, <strong>email</strong>, or <strong>fingerprint</strong>, with ordered results and a details page.</li><li><strong>Output</strong>: key \"view\" page and download of the original armored key, showing fingerprint and essential information.</li><li><strong>Security and robustness</strong>: input/output sanitization (avoid XSS), basic rate limiting, safe handling of uploaded content (prefer text storage), and minimal event logging.</li></ul> <i>Note:</i> the project can be intentionally simple (upload + search + download) but may be extended with extras such as confirming the key is truly <strong>public</strong>, advanced de-duplication, pagination, or machine-readable APIs for integrations. The end goal is a practical and educational service demonstrating correct and secure publication of PGP public keys."
+    },
+    "difficulty": 1,
+    "taken": false
+  },
+  {
+ "slug": "tor-node-manager-webapp",
+ "section": {
+ "it": "Cyber security",
+ "en": "Cyber security"
+ },
+ "title": {
+ "it": "WebApp gestionale per i propri nodi Tor",
+ "en": "Web app to manage your Tor nodes"
+ },
+ "goal": {
+ "it": "Realizzare una webapp per <strong>monitorare</strong> e <strong>gestire</strong> in modo <strong>controllato</strong> i propri nodi Tor (relay/bridge/exit), centralizzando <strong>stato</strong>, <strong>metriche</strong> e <strong>operazioni remote</strong> (es. restart, reload configurazione, rotazione log) con <strong>autenticazione</strong> e <strong>audit log</strong>.",
+ "en": "Build a web app to <strong>monitor</strong> and <strong>manage</strong> your Tor nodes (relay/bridge/exit) in a <strong>controlled</strong> manner, centralizing <strong>status</strong>, <strong>metrics</strong>, and <strong>remote operations</strong> (e.g., restart, config reload, log rotation) with <strong>authentication</strong> and an <strong>audit log</strong>."
+ },
+ "tools": {
+ "it": [
+ "Python (medio-basso)",
+ "Concetti base Tor",
+ "SSH/API/monitoring",
+ "Sicurezza web (auth, sessioni, hardening)"
+ ],
+ "en": [
+ "Python (mid-low)",
+ "Tor basics",
+ "SSH/API/monitoring",
+ "Web security (auth, sessions, hardening)"
+ ]
+ },
+ "about": {
+ "it": "Il progetto mira a costruire un gestionale \"single pane of glass\" per nodi Tor sotto il proprio controllo, con attenzione a <strong>sicurezza operativa</strong> e <strong>tracciabilità</strong>. L'idea è separare <strong>dashboard</strong> (web) e <strong>integrazione verso i server</strong> (agent o accesso via SSH/API), così da eseguire operazioni remote senza esporre direttamente servizi sensibili. <i>Componenti tecnici attesi:</i> <ul><li><strong>Inventario nodi</strong>: anagrafica dei server/nodi (ruolo: relay/bridge/exit), metadati (hostname, IP, fingerprint, versione Tor), tagging e gruppi.</li><li><strong>Raccolta stato e metriche</strong>: heartbeat, uptime, versione Tor, stato servizio, utilizzo CPU/RAM/disk, banda, log health; raccolta via agent locale o integrazione (SSH + comandi controllati / API di monitoring esistenti).</li><li><strong>Dashboard</strong>: vista riepilogativa con filtri (stato, ruolo, tag), pagine di dettaglio per nodo e grafici/andamento (anche semplice, purché utile).</li><li><strong>Alerting</strong>: regole base (nodo offline, disco quasi pieno, servizio giù, errori ripetuti nei log) con notifiche (email/telegram opzionale) e soglie configurabili.</li><li><strong>Azioni remote controllate</strong>: operazioni \"safe\" e limitate (es. <i>restart</i> Tor, <i>reload</i> config, rotazione log, test reachability), implementate con whitelist di comandi e timeout, evitando shell generiche.</li><li><strong>Audit log</strong>: tracciamento completo di accessi e azioni (chi, cosa, quando, esito), utile per accountability e troubleshooting.</li><li><strong>Sicurezza</strong>: autenticazione (ruoli: admin/operatore/sola lettura), gestione sessioni, rate limiting, protezione CSRF, e protezione delle credenziali (es. key SSH/secret gestiti in modo sicuro).</li></ul> <i>Nota:</i> lo scopo è creare un sistema minimale e ben progettato che dimostri <strong>architettura</strong>, <strong>controllo</strong> e <strong>sicurezza</strong> nella gestione remota di nodi Tor. Il progetto può essere esteso con funzioni come export report, backup configurazioni, e integrazione con strumenti di monitoring esistenti.",
+ "en": "This project builds a \"single pane of glass\" management console for Tor nodes under your control, with an emphasis on <strong>operational security</strong> and <strong>traceability</strong>. The core idea is to separate the <strong>web dashboard</strong> from the <strong>server-side integration</strong> layer (agent or SSH/API access), so remote operations can be performed without directly exposing sensitive services. <i>Expected technical components:</i> <ul><li><strong>Node inventory</strong>: server/node registry (role: relay/bridge/exit), metadata (hostname, IP, fingerprint, Tor version), tagging and grouping.</li><li><strong>Status and metrics collection</strong>: heartbeat, uptime, Tor version, service status, CPU/RAM/disk usage, bandwidth, log health; collected via a local agent or integrations (SSH with controlled commands / existing monitoring APIs).</li><li><strong>Dashboard</strong>: overview with filters (status, role, tags), per-node details, and trend charts (simple is fine, as long as useful).</li><li><strong>Alerting</strong>: basic rules (node offline, disk almost full, service down, repeated log errors) with notifications (email/Telegram optional) and configurable thresholds.</li><li><strong>Controlled remote actions</strong>: safe, limited operations (e.g., Tor <i>restart</i>, config <i>reload</i>, log rotation, reachability checks), implemented with command whitelisting and timeouts, avoiding generic shells.</li><li><strong>Audit log</strong>: full tracking of logins and actions (who, what, when, outcome) for accountability and troubleshooting.</li><li><strong>Security</strong>: authentication (roles: admin/operator/read-only), session management, rate limiting, CSRF protection, and secure handling of credentials (e.g., SSH keys/secrets).</li></ul> <i>Note:</i> the goal is create a minimal, well-designed system that demonstrates <strong>architecture</strong>, <strong>control</strong>, and <strong>security</strong> in remote management of Tor nodes. The project can be extended with features such as report export, configuration backups, and integration with existing monitoring tools."
+ },
+ "difficulty": 4,
+ "taken": true
+},
+  {
+    "slug": "mobile-permissions-demo",
+    "section": {
+      "it": "Cyber security",
+      "en": "Cyber security"
+    },
+    "title": {
+      "it": "App mobile dimostrativa sui rischi dei permessi concessi dall'utente",
+      "en": "Demonstration mobile app on the risks of user-granted permissions"
+    },
+    "goal": {
+      "it": "Realizzare un'app mobile <strong>dimostrativa ed educativa</strong> che mostri, in modo <strong>trasparente</strong> e in <strong>ambiente controllato</strong>, come i permessi concessi dall'utente (es. contatti, posizione, microfono, foto, notifiche, accessibilità) possano abilitare scenari di rischio <i>privacy</i>/<i>sicurezza</i> anche senza exploit, producendo una visualizzazione chiara di <strong>cosa può essere osservato</strong>, <strong>quando</strong> e <strong>perché</strong>. L'app deve evitare raccolta non necessaria e non deve esfiltrare dati: l'obiettivo è <strong>consapevolezza</strong>, <strong>misurazione</strong> e <strong>discussione</strong>.",
+      "en": "Build a <strong>demonstration and educational</strong> mobile app that shows, in a <strong>transparent</strong> and <strong>controlled</strong> environment, how user-granted permissions (e.g., contacts, location, microphone, photos, notifications, accessibility) can enable <i>privacy</i>/<i>security</i> risk scenarios even without exploits, providing a clear visualization of <strong>what can be observed</strong>, <strong>when</strong>, and <strong>why</strong>. The app must avoid unnecessary collection and must not exfiltrate data: the goal is <strong>awareness</strong>, <strong>measurement</strong>, and <strong>discussion</strong>."
+    },
+    "tools": {
+      "it": [
+        "Sviluppo mobile (medio-alto)",
+        "Modello permessi Android e/o iOS",
+        "UX orientata alla trasparenza"
+      ],
+      "en": [
+        "Mobile development (mid-high)",
+        "Android and/or iOS permissions model",
+        "Transparency-oriented UX"
+      ]
+    },
+    "about": {
+      "it": "<i>Idea centrale:</i> l'app <strong>dimostra</strong> quali capacità si sbloccano con i permessi e rende <strong>visibile</strong> l'impatto con esempi riproducibili e controllati. <i>Funzionalità attese:</i> <ul><li><strong>Wizard permessi</strong>: richiesta permessi a step, con spiegazione <i>prima</i> e <i>dopo</i> la concessione (cosa abilita, rischi tipici, alternative).</li><li><strong>Dashboard attività</strong>: timeline locale che mostra <i>quando</i> l'app ha accesso a una capability (es. lettura contatti, accesso foto, posizione), con motivazione e contesto.</li><li><strong>Modalità \"simulazione sicura\"</strong>: dove possibile usare <strong>dati sintetici</strong> o campioni locali (es. contatti fittizi creati dall'utente nell'app, immagini demo incluse) invece di leggere dati reali; se si usano dati reali, minimizzazione e trattamento locale.</li><li><strong>Misuse patterns</strong>: esempi di \"uso improprio\" descritti e mostrati <strong>senza</strong> esfiltrazione (es. correlazione permesso->informazione deducibile, frequenza accessi, granularità), con indicatori di rischio.</li><li><strong>Trasparenza totale</strong>: pannello \"Cosa fa l'app\" che elenca in modo chiaro tutte le azioni possibili e un interruttore per disabilitare moduli; log esportabile <i>solo</i> come report locale.</li><li><strong>Confronto piattaforme</strong>: se fattibile, confronto tra Android/iOS su differenze di permessi, runtime permission, notifiche, background limitations, e impatto UX.</li><li><strong>Valutazione</strong>: studio di casi d'uso e mini test con utenti (comprensione, percezione rischio, errori), con metriche tipo tempo di comprensione, riduzione concessioni superflue, chiarezza delle schermate.</li></ul> <i>Nota:</i> il progetto deve rimanere <strong>eticamente e legalmente sicuro</strong>: niente invio dati a server esterni, niente funzioni \"stealth\", niente bypass di protezioni. L'obiettivo è produrre un <strong>dimostratore</strong> che renda tangibile la differenza tra <i>permesso necessario</i> e <i>permesso eccessivo</i> e migliori la consapevolezza dell'utente.",
+      "en": "<i>Core idea:</i> the app <strong>demonstrates</strong> what capabilities become available with permissions and makes the impact <strong>visible</strong> through reproducible, controlled examples. <i>Expected features:</i> <ul><li><strong>Permission wizard</strong>: request permissions step-by-step, with clear explanation <i>before</i> and <i>after</i> granting (what it enables, typical risks, alternatives).</li><li><strong>Activity dashboard</strong>: a local timeline showing <i>when</i> the app accessed a capability (e.g., contacts, photos, location), with reason and context.</li><li><strong>Safe simulation mode</strong>: whenever possible use <strong>synthetic data</strong> or local samples (e.g., user-created dummy contacts inside the app, bundled demo images) instead of real data; if real data is used, minimize and keep processing local.</li><li><strong>Misuse patterns</strong>: illustrate \"misuse\" scenarios <strong>without</strong> exfiltration (e.g., permission->inference, access frequency, granularity), with risk indicators and explanations.</li><li><strong>Full transparency</strong>: a \"What the app does\" panel listing all actions, module toggles, and a report export that stays <i>local</i>.</li><li><strong>Platform comparison</strong>: if feasible, compare Android/iOS permission differences (runtime permission flow, notifications, background limits) and UX impact.</li><li><strong>Evaluation</strong>: case studies and small user testing (understanding, perceived risk, mistakes), with metrics such as time-to-understand, reduction of unnecessary grants, and UI clarity.</li></ul> <i>Note:</i> the project must remain <strong>ethically and legally safe</strong>: no sending data to external servers, no stealth features, no bypassing protections. The goal is a <strong>demonstrator</strong> that makes the difference between <i>necessary permission</i> and <i>excessive permission</i> tangible and improves user awareness."
+    },
+    "difficulty": 5,
+    "taken": false
+  },
+  {
+    "slug": "forensic-copy-tool",
+    "section": {
+      "it": "Forense",
+      "en": "Forensic"
+    },
+    "title": {
+      "it": "Software di copia forense con verifica di integrità",
+      "en": "Forensic copying software with integrity verification"
+    },
+    "goal": {
+      "it": "Sviluppare un software che esegua la <strong>copia forense</strong> di cartelle (sorgente -> destinazione) producendo <strong>evidenze verificabili</strong>: calcolo di hash crittografici per i file copiati, verifica di corrispondenza con gli originali e generazione di un <strong>report</strong> ripetibile e auditabile (con elenco file, dimensioni, timestamp e digest).",
+      "en": "Build software that performs <strong>forensic copying</strong> of folders (source -> destination) and produces <strong>verifiable evidence</strong>: compute cryptographic hashes for copied files, verify equality with the originals, and generate a repeatable, auditable <strong>report</strong> (file list, sizes, timestamps, and digests)."
+    },
+    "tools": {
+      "it": [
+        "Python (medio-basso)",
+        "Hashing crittografico (es. SHA-256)",
+        "I/O e filesystem"
+      ],
+      "en": [
+        "Python (mid-low)",
+        "Cryptographic hashing (e.g., SHA-256)",
+        "I/O and filesystem"
+      ]
+    },
+    "about": {
+      "it": "L'obiettivo è realizzare un tool pratico che supporti un workflow tipico di acquisizione e copia in ambito forense, dove conta dimostrare che i dati copiati <strong>corrispondono</strong> agli originali. Il software deve copiare una o più directory preservando struttura e metadati quanto possibile e produrre un insieme di artefatti verificabili. <i>Workflow minimo richiesto:</i> <ul><li><strong>Selezione sorgente</strong> e <strong>destinazione</strong> (cartella o supporto), con controllo di spazio disponibile e permessi.</li><li><strong>Copia</strong> dei file con preservazione di struttura e gestione robusta di errori (file in uso, permessi negati, nomi non validi).</li><li><strong>Hashing</strong>: calcolo di digest crittografici (es. SHA-256) per ogni file sorgente e per ogni file copiato, con confronto 1:1 e segnalazione delle difformità.</li><li><strong>Report</strong>: generazione di un report strutturato (es. JSON/CSV + un file \"umano\" in testo) contenente elenco dei file, percorso relativo, dimensione, timestamp principali, hash sorgente, hash destinazione, esito verifica e log di eventuali errori.</li></ul> <i>Estensioni opzionali (consigliate):</i> <ul><li><strong>Logging dettagliato</strong> e firma del report: hash del report stesso e catena di hash per impedire modifiche non rilevate.</li><li><strong>Resume/Checkpoint</strong>: possibilità di riprendere una copia interrotta senza ricominciare da zero, mantenendo coerenza delle verifiche.</li><li><strong>Catena di custodia</strong>: raccolta di metadati operativi (chi ha eseguito la copia, data/ora, host, versione tool, parametri), per rendere l'acquisizione più documentabile.</li><li><strong>Modalità verifica-only</strong>: controllo di integrità su una copia già eseguita (sorgente vs destinazione) usando i digest già calcolati.</li></ul> <i>Nota:</i> lo scopo non è sostituire strumenti forensi professionali di imaging a livello blocchi, ma realizzare un tool didattico e utile per copie file-level con evidenza di integrità, concentrandosi su correttezza, robustezza e ripetibilità dei risultati.",
+      "en": "The goal is to build a practical tool that supports a typical forensic copy workflow, where you must prove the copied data <strong>matches</strong> the original. The software should copy one or more directories while preserving structure and metadata as much as feasible, and produce verifiable artifacts. <i>Minimum required workflow:</i> <ul><li><strong>Select source</strong> and <strong>destination</strong> (folder or device), with checks for available space and permissions.</li><li><strong>Copy</strong> files while preserving structure and handling errors robustly (locked files, permission denied, invalid names).</li><li><strong>Hashing</strong>: compute cryptographic digests (e.g., SHA-256) for each source file and each copied file, compare 1:1, and flag mismatches.</li><li><strong>Report</strong>: generate a structured report (e.g., JSON/CSV plus a human-readable text file) containing file list, relative path, size, key timestamps, source hash, destination hash, verification result, and an error log.</li></ul> <i>Optional extensions (recommended):</i> <ul><li><strong>Detailed logging</strong> and report sealing: hash the report itself and build a hash chain to detect tampering.</li><li><strong>Resume/Checkpoint</strong>: resume an interrupted copy without starting over, preserving verification consistency.</li><li><strong>Chain of custody</strong>: record operational metadata (who performed the copy, date/time, host, tool version, parameters) to make the acquisition more defensible.</li><li><strong>Verify-only mode</strong>: validate integrity on an existing copy (source vs destination) using previously computed digests.</li></ul> <i>Note:</i> the aim is not to replace professional block-level forensic imaging tools, but to build an educational and useful file-level copy tool with integrity evidence, focusing on correctness, robustness, and repeatability."
+    },
+    "difficulty": 2,
+    "taken": false
+  },
+  {
+    "slug": "duckyscript-emulator",
+    "section": {
+      "it": "Cyber security",
+      "en": "Cyber security"
+    },
+    "title": {
+      "it": "Emulatore di DuckyScript 3.0 per esecuzione controllata e validazione",
+      "en": "DuckyScript 3.0 emulator for controlled execution and validation"
+    },
+    "goal": {
+      "it": "Progettare e implementare un <strong>interprete/emulatore</strong> di <strong>DuckyScript 3.0</strong> capace di eseguire script in modo <strong>non distruttivo</strong> e <strong>controllato</strong> (sandbox), riproducendo <strong>timing</strong> e <strong>sequenze di input</strong> come farebbe un dispositivo HID, tracciando gli eventi generati e producendo un <strong>report</strong> utile per validazione, test e analisi del rischio.",
+      "en": "Design and implement a <strong>DuckyScript 3.0 interpreter/emulator</strong> that runs scripts in a <strong>non-destructive</strong>, <strong>controlled</strong> sandbox, reproducing HID-like <strong>timing</strong> and <strong>input sequences</strong>, tracing generated events and producing a <strong>report</strong> useful for validation, testing, and risk analysis."
+    },
+    "tools": {
+      "it": [
+        "Python",
+        "Progettazione interpreti (lexer/parser/AST)",
+        "Basi HID e keyboard layout"
+      ],
+      "en": [
+        "Python",
+        "Interpreter design (lexer/parser/AST)",
+        "HID basics and keyboard layouts"
+      ]
+    },
+    "about": {
+      "it": "L'obiettivo è creare un sistema che prenda in input uno script <strong>DuckyScript 3.0</strong> e lo trasformi in una sequenza di <strong>eventi di tastiera</strong> (pressioni/rilasci, testo, combinazioni, delay) senza inviarli realmente al sistema operativo. Il risultato deve essere un'emulazione ripetibile e osservabile, utile sia per <strong>validazione</strong> (lo script è sintatticamente e semanticamente corretto?) sia per <strong>analisi</strong> (quale impatto avrebbe su un target?). <i>Componenti tecnici attesi:</i> <ul><li><strong>Parsing</strong>: lexer/parser per riconoscere comandi, argomenti, stringhe, commenti e costrutti tipici; costruzione di una rappresentazione interna (es. AST o lista di istruzioni) con posizione/linea per error reporting.</li><li><strong>Validazione</strong>: controlli di errori sintattici e semantici (comandi sconosciuti, argomenti mancanti, range non validi per delay, gestione di variabili/macro se previste), con messaggi chiari e riferimenti alla riga.</li><li><strong>Runtime simulato</strong>: esecuzione step-by-step con un <strong>clock virtuale</strong> che riproduce delay e timing; generazione di eventi tipo <i>KeyDown</i>/<i>KeyUp</i>/<i>Text</i>/<i>Delay</i> e loro serializzazione.</li><li><strong>Sandbox / target simulato</strong>: modello minimale di \"ambiente\" (focus window, clipboard simulata, shell simulata) per interpretare azioni frequenti senza eseguirle davvero; possibilità di definire profili target (es. Windows/Linux/macOS) a livello di comportamento simulato.</li><li><strong>Report</strong>: output strutturato (es. JSON) con timeline eventi, tempi cumulativi, statistiche (numero tasti, numero combinazioni, lunghezza script, delay totale) e indicatori utili per test e confronto tra versioni dello script.</li><li><strong>Metrica rischio/complessità</strong>: calcolo di un punteggio basato su pattern (es. numero di hotkey \"sensibili\", uso massivo di paste/testo, sequenze rapide, apertura di shell/Run se modellate nel target) e spiegazione di cosa contribuisce al punteggio.</li><li><strong>Test unitari</strong>: suite di test per parsing, validazione e runtime (casi corretti/errati), in modo da garantire regressioni minime.</li></ul> <i>Estensioni opzionali:</i> <ul><li><strong>Layout cross-OS</strong>: mappatura di tasti e caratteri su layout diversi (es. IT/US) e differenze tra sistemi, con output comparativo.</li><li><strong>Esportazione</strong>: generazione di una rappresentazione alternativa (es. \"event trace\" riutilizzabile) o conversione verso formati di test.</li><li><strong>Modalità \"strict\"</strong>: regole più rigide per individuare ambiguità o comandi potenzialmente pericolosi.</li></ul> <i>Nota:</i> la sandbox deve impedire effetti reali sul sistema: niente invio di input al SO e niente esecuzione di comandi reali. L'obiettivo è un emulatore didattico e sperimentale che aiuti a comprendere e validare script DuckyScript in sicurezza.",
+      "en": "The goal is to build a system that takes a <strong>DuckyScript 3.0</strong> script and turns it into a sequence of <strong>keyboard events</strong> (press/release, text, combos, delays) without actually sending them to the operating system. The result must be a repeatable and observable emulation, useful both for <strong>validation</strong> (is the script syntactically and semantically correct?) and for <strong>analysis</strong> (what would its impact be on a target?). <i>Expected technical components:</i> <ul><li><strong>Parsing</strong>: lexer/parser to recognize commands, arguments, strings, comments, and typical constructs; build an internal representation (e.g., AST or instruction list) with line/position for error reporting.</li><li><strong>Validation</strong>: syntax and semantic checks (unknown commands, missing arguments, invalid delay ranges, handling variables/macros if supported) with clear messages and line references.</li><li><strong>Simulated runtime</strong>: step-by-step execution with a <strong>virtual clock</strong> that reproduces delays and timing; generate <i>KeyDown</i>/<i>KeyUp</i>/<i>Text</i>/<i>Delay</i> events and serialize them.</li><li><strong>Sandbox / simulated target</strong>: a minimal \"environment\" model (focused window, simulated clipboard, simulated shell) to interpret common actions without executing them; allow target profiles (e.g., Windows/Linux/macOS) at the level of simulated behavior.</li><li><strong>Report</strong>: structured output (e.g., JSON) with an event timeline, cumulative times, stats (key count, combo count, script length, total delay), and indicators useful for testing and comparing script versions.</li><li><strong>Risk/complexity metric</strong>: compute a score based on patterns (e.g., sensitive hotkeys, mass paste/text usage, fast sequences, shell/Run opening when modeled) and explain the score contributors.</li><li><strong>Unit tests</strong>: a test suite for parsing, validation, and runtime (valid/invalid cases) to keep regressions low.</li></ul> <i>Optional extensions:</i> <ul><li><strong>Cross-OS layouts</strong>: map keys/characters across different layouts (e.g., IT/US) and OS differences, with comparative output.</li><li><strong>Export</strong>: generate a reusable \"event trace\" format or convert to testing formats.</li><li><strong>Strict mode</strong>: stricter rules to flag ambiguities or potentially dangerous constructs.</li></ul> <i>Note:</i> the sandbox must prevent real effects on the system: no OS-level input injection and no real command execution. The goal is an educational and experimental emulator that helps understand and validate DuckyScript safely."
+    },
+    "difficulty": 5,
+    "taken": false
+  },
+  {
+    "slug": "hid-backdoor-state-of-the-art",
+    "section": {
+      "it": "Cyber security",
+      "en": "Cyber security"
+    },
+    "title": {
+      "it": "Stato dell'arte di tecniche HID-based e progettazione di un framework di analisi controllata",
+      "en": "State of the art of HID-based techniques and design of a controlled analysis framework"
+    },
+    "goal": {
+      "it": "<strong>Studiare</strong> in modo sistematico le tecniche osservate in scenari <strong>HID-based</strong> (dispositivi che emulano tastiera) che possono portare a <i>esecuzione automatica</i>, <i>persistenza</i> e <i>controllo</i> di un host, costruendo una <strong>tassonomia</strong> e una matrice tecnica->prerequisiti->impatto->tracce->contromisure. <strong>Progettare e realizzare</strong> un framework di <strong>riproduzione controllata</strong> (in VM/lab) che permetta di emulare questi scenari in modo <strong>non distruttivo</strong>, raccogliendo log e generando report utili a valutazione e difesa.",
+      "en": "<strong>Systematically study</strong> HID-based techniques (keyboard-emulating devices) that can enable <i>automatic execution</i>, <i>persistence</i>, and <i>host control</i>, building a <strong>taxonomy</strong> and a technique->prerequisites->impact->traces->countermeasures matrix. <strong>Design and implement</strong> a <strong>controlled reproduction</strong> framework (VM/lab) to emulate such scenarios in a <strong>non-destructive</strong> way, collect logs, and generate reports useful for evaluation and defense."
+    },
+    "tools": {
+      "it": [
+        "Python",
+        "Basi OS (Windows/Linux)",
+        "Ambienti virtualizzati (VM)",
+        "Raccolta log (eventi, processi, filesystem)"
+      ],
+      "en": [
+        "Python",
+        "OS basics (Windows/Linux)",
+        "Virtualized environments (VMs)",
+        "Logging collection (events, processes, filesystem)"
+      ]
+    },
+    "about": {
+      "it": "Il progetto mira a trasformare un insieme di tecniche HID-based (es. sequenze di hotkey e comandi, apertura di shell/Run dialog, download/exec, tentativi di persistenza) in un corpus <strong>analizzabile</strong> e <strong>riproducibile</strong> in laboratorio. L'obiettivo non è creare malware utilizzabile, ma <strong>capire</strong> come queste tecniche funzionano, quali prerequisiti richiedono e quali tracce lasciano, così da derivare <strong>contromisure</strong> pratiche. <i>Output e componenti attesi:</i> <ul><li><strong>Tassonomia</strong> di tecniche HID-based: categorie (esecuzione iniziale, escalation/abuso funzionalità, persistenza, difesa/evasione), prerequisiti (privilegi, configurazioni, user interaction) e impatti.</li><li><strong>Matrice</strong> tecnica->prerequisiti->impatto->tracce->contromisure, con esempi e riferimenti a fonti pubbliche (blog, report, PoC noti), e una sezione su limiti/varianti (layout tastiera, timing, versioni OS).</li><li><strong>Framework di emulazione controllata</strong>: motore che esegue scenari \"scriptati\" in VM generando <i>event trace</i> di input (timing, tasti, combinazioni) e <strong>azioni simulate</strong> (es. placeholder al posto di download/exec reali) per evitare effetti dannosi.</li><li><strong>Raccolta evidenze</strong>: acquisizione e correlazione di log di processo, eventi di sistema, modifiche a filesystem/registry (dove applicabile), e timeline delle azioni per evidenziare <strong>tracce</strong> tipiche.</li><li><strong>Report automatico</strong>: generazione di un report per scenario con timeline, indicatori (cosa è successo, dove, con quale sequenza), e suggerimenti di <strong>mitigazione</strong> (hardening, regole di detection, alerting).</li><li><strong>Valutazione</strong>: confronto tra scenari (es. con/ senza mitigazioni) e misure di efficacia delle contromisure (riduzione superficie d'attacco, aumento visibilità, riduzione falsi positivi dove applicabile).</li></ul> <i>Nota:</i> il prototipo è pensato per <strong>test controllati</strong> e <strong>ripetibili</strong> su VM/host isolati, con obiettivo di misurare <strong>efficacia</strong>, <strong>stealth</strong> e <strong>tracce</strong> delle tecniche e confrontare le contromisure.",
+      "en": "This project turns a set of HID-based techniques (e.g., hotkey/command sequences, opening shell/Run dialogs, download/exec attempts, persistence attempts) into an <strong>analyzable</strong> and <strong>reproducible</strong> lab corpus. The goal is not to build deployable malware, but to <strong>understand</strong> how these techniques work, what prerequisites they require, and what traces they leave, in order to derive practical <strong>countermeasures</strong>. <i>Expected outputs and components:</i> <ul><li><strong>Taxonomy</strong> of HID-based techniques: categories (initial execution, feature abuse, persistence, evasion), prerequisites (privileges, configuration, user interaction), and impacts.</li><li><strong>Matrix</strong> technique->prerequisites->impact->traces->countermeasures, with examples and references to public sources (blogs, reports, known PoCs), plus limits/variants (keyboard layouts, timing, OS versions).</li><li><strong>Controlled emulation framework</strong>: an engine that runs scripted scenarios in VMs, generating input event traces (timing, keys, combos) and <strong>simulated actions</strong> (placeholders instead of real download/exec) to avoid harmful effects.</li><li><strong>Evidence collection</strong>: collect and correlate process logs, system events, filesystem/registry changes (where applicable), and action timelines to highlight typical <strong>artifacts</strong>.</li><li><strong>Automated reporting</strong>: per-scenario reports with timelines, indicators (what happened, where, with which sequence), and <strong>mitigation</strong> guidance (hardening, detection rules, alerting).</li><li><strong>Evaluation</strong>: compare scenarios (e.g., with/without mitigations) and measure countermeasure effectiveness (attack surface reduction, increased visibility, reduced false positives where applicable).</li></ul> <i>Note (lab framing):</i> the prototype targets <strong>controlled</strong>, <strong>repeatable</strong> testing on isolated VMs/hosts to measure <strong>effectiveness</strong>, <strong>stealth</strong>, and <strong>artifacts</strong> and to evaluate countermeasures."
+    },
+    "difficulty": 4,
+    "taken": false
+  }
+]

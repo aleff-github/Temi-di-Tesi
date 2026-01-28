@@ -1,0 +1,19 @@
+{
+  "siteTitle": "Temi di tesi",
+  "siteSubtitle": "Progetti disponibili, obiettivi e prerequisiti",
+  "sourceLink": "Pagina Ufficiale Temi di Tesi",
+  "searchPlaceholder": "Cerca per keyword, skill, tecnologia...",
+  "allSections": "Tutte le sezioni",
+  "allDifficulties": "Tutte le difficoltà",
+  "reset": "Reset",
+  "back": "Torna all'elenco",
+  "copyLink": "Copia link",
+  "goal": "Obiettivo",
+  "tools": "Strumenti e conoscenze richieste",
+  "about": "Di cosa si tratta",
+  "footer": "Sito statico su GitHub Pages • Dati in JSON • IT/EN",
+  "difficultyLabel": "Difficoltà",
+  "sectionLabel": "Sezione",
+  "statusTaken": "Già assegnata",
+  "onlyAvailable": "Mostra solo disponibili"
+}
