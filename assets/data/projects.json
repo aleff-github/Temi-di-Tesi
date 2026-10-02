@@ -297,39 +297,6 @@
     "taken": false
   },
   {
-    "slug": "forensic-copy-tool",
-    "section": {
-      "it": "Forense",
-      "en": "Forensic"
-    },
-    "title": {
-      "it": "Software di copia forense con verifica di integrità",
-      "en": "Forensic copying software with integrity verification"
-    },
-    "goal": {
-      "it": "Sviluppare un software che esegua la <strong>copia forense</strong> di cartelle (sorgente -> destinazione) producendo <strong>evidenze verificabili</strong>: calcolo di hash crittografici per i file copiati, verifica di corrispondenza con gli originali e generazione di un <strong>report</strong> ripetibile e auditabile (con elenco file, dimensioni, timestamp e digest).",
-      "en": "Build software that performs <strong>forensic copying</strong> of folders (source -> destination) and produces <strong>verifiable evidence</strong>: compute cryptographic hashes for copied files, verify equality with the originals, and generate a repeatable, auditable <strong>report</strong> (file list, sizes, timestamps, and digests)."
-    },
-    "tools": {
-      "it": [
-        "Python (medio-basso)",
-        "Hashing crittografico (es. SHA-256)",
-        "I/O e filesystem"
-      ],
-      "en": [
-        "Python (mid-low)",
-        "Cryptographic hashing (e.g., SHA-256)",
-        "I/O and filesystem"
-      ]
-    },
-    "about": {
-      "it": "L'obiettivo è realizzare un tool pratico che supporti un workflow tipico di acquisizione e copia in ambito forense, dove conta dimostrare che i dati copiati <strong>corrispondono</strong> agli originali. Il software deve copiare una o più directory preservando struttura e metadati quanto possibile e produrre un insieme di artefatti verificabili. <i>Workflow minimo richiesto:</i> <ul><li><strong>Selezione sorgente</strong> e <strong>destinazione</strong> (cartella o supporto), con controllo di spazio disponibile e permessi.</li><li><strong>Copia</strong> dei file con preservazione di struttura e gestione robusta di errori (file in uso, permessi negati, nomi non validi).</li><li><strong>Hashing</strong>: calcolo di digest crittografici (es. SHA-256) per ogni file sorgente e per ogni file copiato, con confronto 1:1 e segnalazione delle difformità.</li><li><strong>Report</strong>: generazione di un report strutturato (es. JSON/CSV + un file \"umano\" in testo) contenente elenco dei file, percorso relativo, dimensione, timestamp principali, hash sorgente, hash destinazione, esito verifica e log di eventuali errori.</li></ul> <i>Estensioni opzionali (consigliate):</i> <ul><li><strong>Logging dettagliato</strong> e firma del report: hash del report stesso e catena di hash per impedire modifiche non rilevate.</li><li><strong>Resume/Checkpoint</strong>: possibilità di riprendere una copia interrotta senza ricominciare da zero, mantenendo coerenza delle verifiche.</li><li><strong>Catena di custodia</strong>: raccolta di metadati operativi (chi ha eseguito la copia, data/ora, host, versione tool, parametri), per rendere l'acquisizione più documentabile.</li><li><strong>Modalità verifica-only</strong>: controllo di integrità su una copia già eseguita (sorgente vs destinazione) usando i digest già calcolati.</li></ul> <i>Nota:</i> lo scopo non è sostituire strumenti forense professionali di imaging a livello blocchi, ma realizzare un tool didattico e utile per copie file-level con evidenza di integrità, concentrandosi su correttezza, robustezza e ripetibilità dei risultati.",
-      "en": "The goal is to build a practical tool that supports a typical forensic copy workflow, where you must prove the copied data <strong>matches</strong> the original. The software should copy one or more directories while preserving structure and metadata as much as feasible, and produce verifiable artifacts. <i>Minimum required workflow:</i> <ul><li><strong>Select source</strong> and <strong>destination</strong> (folder or device), with checks for available space and permissions.</li><li><strong>Copy</strong> files while preserving structure and handling errors robustly (locked files, permission denied, invalid names).</li><li><strong>Hashing</strong>: compute cryptographic digests (e.g., SHA-256) for each source file and each copied file, compare 1:1, and flag mismatches.</li><li><strong>Report</strong>: generate a structured report (e.g., JSON/CSV plus a human-readable text file) containing file list, relative path, size, key timestamps, source hash, destination hash, verification result, and an error log.</li></ul> <i>Optional extensions (recommended):</i> <ul><li><strong>Detailed logging</strong> and report sealing: hash the report itself and build a hash chain to detect tampering.</li><li><strong>Resume/Checkpoint</strong>: resume an interrupted copy without starting over, preserving verification consistency.</li><li><strong>Chain of custody</strong>: record operational metadata (who performed the copy, date/time, host, tool version, parameters) to make the acquisition more defensible.</li><li><strong>Verify-only mode</strong>: validate integrity on an existing copy (source vs destination) using previously computed digests.</li></ul> <i>Note:</i> the aim is not to replace professional block-level forensic imaging tools, but to build an educational and useful file-level copy tool with integrity evidence, focusing on correctness, robustness, and repeatability."
-    },
-    "difficulty": 2,
-    "taken": true
-  },
-  {
     "slug": "duckyscript-emulator",
     "section": {
       "it": "Cyber security",
@@ -362,39 +329,4 @@
     "difficulty": 5,
     "taken": false
   },
-  {
-    "slug": "hid-backdoor-state-of-the-art",
-    "section": {
-      "it": "Cyber security",
-      "en": "Cyber security"
-    },
-    "title": {
-      "it": "Stato dell'arte di tecniche HID-based e progettazione di un framework di analisi controllata",
-      "en": "State of the art of HID-based techniques and design of a controlled analysis framework"
-    },
-    "goal": {
-      "it": "<strong>Studiare</strong> in modo sistematico le tecniche osservate in scenari <strong>HID-based</strong> (dispositivi che emulano tastiera) che possono portare a <i>esecuzione automatica</i>, <i>persistenza</i> e <i>controllo</i> di un host, costruendo una <strong>tassonomia</strong> e una matrice tecnica->prerequisiti->impatto->tracce->contromisure. <strong>Progettare e realizzare</strong> un framework di <strong>riproduzione controllata</strong> (in VM/lab) che permetta di emulare questi scenari in modo <strong>non distruttivo</strong>, raccogliendo log e generando report utili a valutazione e difesa.",
-      "en": "<strong>Systematically study</strong> HID-based techniques (keyboard-emulating devices) that can enable <i>automatic execution</i>, <i>persistence</i>, and <i>host control</i>, building a <strong>taxonomy</strong> and a technique->prerequisites->impact->traces->countermeasures matrix. <strong>Design and implement</strong> a <strong>controlled reproduction</strong> framework (VM/lab) to emulate such scenarios in a <strong>non-destructive</strong> way, collect logs, and generate reports useful for evaluation and defense."
-    },
-    "tools": {
-      "it": [
-        "Python",
-        "Basi OS (Windows/Linux)",
-        "Ambienti virtualizzati (VM)",
-        "Raccolta log (eventi, processi, filesystem)"
-      ],
-      "en": [
-        "Python",
-        "OS basics (Windows/Linux)",
-        "Virtualized environments (VMs)",
-        "Logging collection (events, processes, filesystem)"
-      ]
-    },
-    "about": {
-      "it": "Il progetto mira a trasformare un insieme di tecniche HID-based (es. sequenze di hotkey e comandi, apertura di shell/Run dialog, download/exec, tentativi di persistenza) in un corpus <strong>analizzabile</strong> e <strong>riproducibile</strong> in laboratorio. L'obiettivo non è creare malware utilizzabile, ma <strong>capire</strong> come queste tecniche funzionano, quali prerequisiti richiedono e quali tracce lasciano, così da derivare <strong>contromisure</strong> pratiche. <i>Output e componenti attesi:</i> <ul><li><strong>Tassonomia</strong> di tecniche HID-based: categorie (esecuzione iniziale, escalation/abuso funzionalità, persistenza, difesa/evasione), prerequisiti (privilegi, configurazioni, user interaction) e impatti.</li><li><strong>Matrice</strong> tecnica->prerequisiti->impatto->tracce->contromisure, con esempi e riferimenti a fonti pubbliche (blog, report, PoC noti), e una sezione su limiti/varianti (layout tastiera, timing, versioni OS).</li><li><strong>Framework di emulazione controllata</strong>: motore che esegue scenari \"scriptati\" in VM generando <i>event trace</i> di input (timing, tasti, combinazioni) e <strong>azioni simulate</strong> (es. placeholder al posto di download/exec reali) per evitare effetti dannosi.</li><li><strong>Raccolta evidenze</strong>: acquisizione e correlazione di log di processo, eventi di sistema, modifiche a filesystem/registry (dove applicabile), e timeline delle azioni per evidenziare <strong>tracce</strong> tipiche.</li><li><strong>Report automatico</strong>: generazione di un report per scenario con timeline, indicatori (cosa è successo, dove, con quale sequenza), e suggerimenti di <strong>mitigazione</strong> (hardening, regole di detection, alerting).</li><li><strong>Valutazione</strong>: confronto tra scenari (es. con/ senza mitigazioni) e misure di efficacia delle contromisure (riduzione superficie d'attacco, aumento visibilità, riduzione falsi positivi dove applicabile).</li></ul> <i>Nota:</i> il prototipo è pensato per <strong>test controllati</strong> e <strong>ripetibili</strong> su VM/host isolati, con obiettivo di misurare <strong>efficacia</strong>, <strong>stealth</strong> e <strong>tracce</strong> delle tecniche e confrontare le contromisure.",
-      "en": "This project turns a set of HID-based techniques (e.g., hotkey/command sequences, opening shell/Run dialogs, download/exec attempts, persistence attempts) into an <strong>analyzable</strong> and <strong>reproducible</strong> lab corpus. The goal is not to build deployable malware, but to <strong>understand</strong> how these techniques work, what prerequisites they require, and what traces they leave, in order to derive practical <strong>countermeasures</strong>. <i>Expected outputs and components:</i> <ul><li><strong>Taxonomy</strong> of HID-based techniques: categories (initial execution, feature abuse, persistence, evasion), prerequisites (privileges, configuration, user interaction), and impacts.</li><li><strong>Matrix</strong> technique->prerequisites->impact->traces->countermeasures, with examples and references to public sources (blogs, reports, known PoCs), plus limits/variants (keyboard layouts, timing, OS versions).</li><li><strong>Controlled emulation framework</strong>: an engine that runs scripted scenarios in VMs, generating input event traces (timing, keys, combos) and <strong>simulated actions</strong> (placeholders instead of real download/exec) to avoid harmful effects.</li><li><strong>Evidence collection</strong>: collect and correlate process logs, system events, filesystem/registry changes (where applicable), and action timelines to highlight typical <strong>artifacts</strong>.</li><li><strong>Automated reporting</strong>: per-scenario reports with timelines, indicators (what happened, where, with which sequence), and <strong>mitigation</strong> guidance (hardening, detection rules, alerting).</li><li><strong>Evaluation</strong>: compare scenarios (e.g., with/without mitigations) and measure countermeasure effectiveness (attack surface reduction, increased visibility, reduced false positives where applicable).</li></ul> <i>Note (lab framing):</i> the prototype targets <strong>controlled</strong>, <strong>repeatable</strong> testing on isolated VMs/hosts to measure <strong>effectiveness</strong>, <strong>stealth</strong>, and <strong>artifacts</strong> and to evaluate countermeasures."
-    },
-    "difficulty": 4,
-    "taken": true
-  }
 ]
