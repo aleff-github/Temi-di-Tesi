@@ -229,40 +229,40 @@
     "taken": false
   },
   {
- "slug": "tor-node-manager-webapp",
- "section": {
- "it": "Cyber security",
- "en": "Cyber security"
- },
- "title": {
- "it": "WebApp gestionale per i propri nodi Tor",
- "en": "Web app to manage your Tor nodes"
- },
- "goal": {
- "it": "Realizzare una webapp per <strong>monitorare</strong> e <strong>gestire</strong> in modo <strong>controllato</strong> i propri nodi Tor (relay/bridge/exit), centralizzando <strong>stato</strong>, <strong>metriche</strong> e <strong>operazioni remote</strong> (es. restart, reload configurazione, rotazione log) con <strong>autenticazione</strong> e <strong>audit log</strong>.",
- "en": "Build a web app to <strong>monitor</strong> and <strong>manage</strong> your Tor nodes (relay/bridge/exit) in a <strong>controlled</strong> manner, centralizing <strong>status</strong>, <strong>metrics</strong>, and <strong>remote operations</strong> (e.g., restart, config reload, log rotation) with <strong>authentication</strong> and an <strong>audit log</strong>."
- },
- "tools": {
- "it": [
- "Python (medio-basso)",
- "Concetti base Tor",
- "SSH/API/monitoring",
- "Sicurezza web (auth, sessioni, hardening)"
- ],
- "en": [
- "Python (mid-low)",
- "Tor basics",
- "SSH/API/monitoring",
- "Web security (auth, sessions, hardening)"
- ]
- },
- "about": {
- "it": "Il progetto mira a costruire un gestionale \"single pane of glass\" per nodi Tor sotto il proprio controllo, con attenzione a <strong>sicurezza operativa</strong> e <strong>tracciabilità</strong>. L'idea è separare <strong>dashboard</strong> (web) e <strong>integrazione verso i server</strong> (agent o accesso via SSH/API), così da eseguire operazioni remote senza esporre direttamente servizi sensibili. <i>Componenti tecnici attesi:</i> <ul><li><strong>Inventario nodi</strong>: anagrafica dei server/nodi (ruolo: relay/bridge/exit), metadati (hostname, IP, fingerprint, versione Tor), tagging e gruppi.</li><li><strong>Raccolta stato e metriche</strong>: heartbeat, uptime, versione Tor, stato servizio, utilizzo CPU/RAM/disk, banda, log health; raccolta via agent locale o integrazione (SSH + comandi controllati / API di monitoring esistenti).</li><li><strong>Dashboard</strong>: vista riepilogativa con filtri (stato, ruolo, tag), pagine di dettaglio per nodo e grafici/andamento (anche semplice, purché utile).</li><li><strong>Alerting</strong>: regole base (nodo offline, disco quasi pieno, servizio giù, errori ripetuti nei log) con notifiche (email/telegram opzionale) e soglie configurabili.</li><li><strong>Azioni remote controllate</strong>: operazioni \"safe\" e limitate (es. <i>restart</i> Tor, <i>reload</i> config, rotazione log, test reachability), implementate con whitelist di comandi e timeout, evitando shell generiche.</li><li><strong>Audit log</strong>: tracciamento completo di accessi e azioni (chi, cosa, quando, esito), utile per accountability e troubleshooting.</li><li><strong>Sicurezza</strong>: autenticazione (ruoli: admin/operatore/sola lettura), gestione sessioni, rate limiting, protezione CSRF, e protezione delle credenziali (es. key SSH/secret gestiti in modo sicuro).</li></ul> <i>Nota:</i> lo scopo è creare un sistema minimale e ben progettato che dimostri <strong>architettura</strong>, <strong>controllo</strong> e <strong>sicurezza</strong> nella gestione remota di nodi Tor. Il progetto può essere esteso con funzioni come export report, backup configurazioni, e integrazione con strumenti di monitoring esistenti.",
- "en": "This project builds a \"single pane of glass\" management console for Tor nodes under your control, with an emphasis on <strong>operational security</strong> and <strong>traceability</strong>. The core idea is to separate the <strong>web dashboard</strong> from the <strong>server-side integration</strong> layer (agent or SSH/API access), so remote operations can be performed without directly exposing sensitive services. <i>Expected technical components:</i> <ul><li><strong>Node inventory</strong>: server/node registry (role: relay/bridge/exit), metadata (hostname, IP, fingerprint, Tor version), tagging and grouping.</li><li><strong>Status and metrics collection</strong>: heartbeat, uptime, Tor version, service status, CPU/RAM/disk usage, bandwidth, log health; collected via a local agent or integrations (SSH with controlled commands / existing monitoring APIs).</li><li><strong>Dashboard</strong>: overview with filters (status, role, tags), per-node details, and trend charts (simple is fine, as long as useful).</li><li><strong>Alerting</strong>: basic rules (node offline, disk almost full, service down, repeated log errors) with notifications (email/Telegram optional) and configurable thresholds.</li><li><strong>Controlled remote actions</strong>: safe, limited operations (e.g., Tor <i>restart</i>, config <i>reload</i>, log rotation, reachability checks), implemented with command whitelisting and timeouts, avoiding generic shells.</li><li><strong>Audit log</strong>: full tracking of logins and actions (who, what, when, outcome) for accountability and troubleshooting.</li><li><strong>Security</strong>: authentication (roles: admin/operator/read-only), session management, rate limiting, CSRF protection, and secure handling of credentials (e.g., SSH keys/secrets).</li></ul> <i>Note:</i> the goal is create a minimal, well-designed system that demonstrates <strong>architecture</strong>, <strong>control</strong>, and <strong>security</strong> in remote management of Tor nodes. The project can be extended with features such as report export, configuration backups, and integration with existing monitoring tools."
- },
- "difficulty": 4,
- "taken": false
-},
+    "slug": "tor-node-manager-webapp",
+    "section": {
+      "it": "Cyber security",
+      "en": "Cyber security"
+    },
+    "title": {
+      "it": "WebApp gestionale per i propri nodi Tor",
+      "en": "Web app to manage your Tor nodes"
+    },
+    "goal": {
+      "it": "Realizzare una webapp per <strong>monitorare</strong> e <strong>gestire</strong> in modo <strong>controllato</strong> i propri nodi Tor (relay/bridge/exit), centralizzando <strong>stato</strong>, <strong>metriche</strong> e <strong>operazioni remote</strong> (es. restart, reload configurazione, rotazione log) con <strong>autenticazione</strong> e <strong>audit log</strong>.",
+      "en": "Build a web app to <strong>monitor</strong> and <strong>manage</strong> your Tor nodes (relay/bridge/exit) in a <strong>controlled</strong> manner, centralizing <strong>status</strong>, <strong>metrics</strong>, and <strong>remote operations</strong> (e.g., restart, config reload, log rotation) with <strong>authentication</strong> and an <strong>audit log</strong>."
+    },
+    "tools": {
+      "it": [
+        "Python (medio-basso)",
+        "Concetti base Tor",
+        "SSH/API/monitoring",
+        "Sicurezza web (auth, sessioni, hardening)"
+      ],
+      "en": [
+        "Python (mid-low)",
+        "Tor basics",
+        "SSH/API/monitoring",
+        "Web security (auth, sessions, hardening)"
+      ]
+    },
+    "about": {
+      "it": "Il progetto mira a costruire un gestionale \"single pane of glass\" per nodi Tor sotto il proprio controllo, con attenzione a <strong>sicurezza operativa</strong> e <strong>tracciabilità</strong>. L'idea è separare <strong>dashboard</strong> (web) e <strong>integrazione verso i server</strong> (agent o accesso via SSH/API), così da eseguire operazioni remote senza esporre direttamente servizi sensibili. <i>Componenti tecnici attesi:</i> <ul><li><strong>Inventario nodi</strong>: anagrafica dei server/nodi (ruolo: relay/bridge/exit), metadati (hostname, IP, fingerprint, versione Tor), tagging e gruppi.</li><li><strong>Raccolta stato e metriche</strong>: heartbeat, uptime, versione Tor, stato servizio, utilizzo CPU/RAM/disk, banda, log health; raccolta via agent locale o integrazione (SSH + comandi controllati / API di monitoring esistenti).</li><li><strong>Dashboard</strong>: vista riepilogativa con filtri (stato, ruolo, tag), pagine di dettaglio per nodo e grafici/andamento (anche semplice, purché utile).</li><li><strong>Alerting</strong>: regole base (nodo offline, disco quasi pieno, servizio giù, errori ripetuti nei log) con notifiche (email/telegram opzionale) e soglie configurabili.</li><li><strong>Azioni remote controllate</strong>: operazioni \"safe\" e limitate (es. <i>restart</i> Tor, <i>reload</i> config, rotazione log, test reachability), implementate con whitelist di comandi e timeout, evitando shell generiche.</li><li><strong>Audit log</strong>: tracciamento completo di accessi e azioni (chi, cosa, quando, esito), utile per accountability e troubleshooting.</li><li><strong>Sicurezza</strong>: autenticazione (ruoli: admin/operatore/sola lettura), gestione sessioni, rate limiting, protezione CSRF, e protezione delle credenziali (es. key SSH/secret gestiti in modo sicuro).</li></ul> <i>Nota:</i> lo scopo è creare un sistema minimale e ben progettato che dimostri <strong>architettura</strong>, <strong>controllo</strong> e <strong>sicurezza</strong> nella gestione remota di nodi Tor. Il progetto può essere esteso con funzioni come export report, backup configurazioni, e integrazione con strumenti di monitoring esistenti.",
+      "en": "This project builds a \"single pane of glass\" management console for Tor nodes under your control, with an emphasis on <strong>operational security</strong> and <strong>traceability</strong>. The core idea is to separate the <strong>web dashboard</strong> from the <strong>server-side integration</strong> layer (agent or SSH/API access), so remote operations can be performed without directly exposing sensitive services. <i>Expected technical components:</i> <ul><li><strong>Node inventory</strong>: server/node registry (role: relay/bridge/exit), metadata (hostname, IP, fingerprint, Tor version), tagging and grouping.</li><li><strong>Status and metrics collection</strong>: heartbeat, uptime, Tor version, service status, CPU/RAM/disk usage, bandwidth, log health; collected via a local agent or integrations (SSH with controlled commands / existing monitoring APIs).</li><li><strong>Dashboard</strong>: overview with filters (status, role, tags), per-node details, and trend charts (simple is fine, as long as useful).</li><li><strong>Alerting</strong>: basic rules (node offline, disk almost full, service down, repeated log errors) with notifications (email/Telegram optional) and configurable thresholds.</li><li><strong>Controlled remote actions</strong>: safe, limited operations (e.g., Tor <i>restart</i>, config <i>reload</i>, log rotation, reachability checks), implemented with command whitelisting and timeouts, avoiding generic shells.</li><li><strong>Audit log</strong>: full tracking of logins and actions (who, what, when, outcome) for accountability and troubleshooting.</li><li><strong>Security</strong>: authentication (roles: admin/operator/read-only), session management, rate limiting, CSRF protection, and secure handling of credentials (e.g., SSH keys/secrets).</li></ul> <i>Note:</i> the goal is create a minimal, well-designed system that demonstrates <strong>architecture</strong>, <strong>control</strong>, and <strong>security</strong> in remote management of Tor nodes. The project can be extended with features such as report export, configuration backups, and integration with existing monitoring tools."
+    },
+    "difficulty": 4,
+    "taken": false
+  },
   {
     "slug": "mobile-permissions-demo",
     "section": {
@@ -294,7 +294,7 @@
       "en": "<i>Core idea:</i> the app <strong>demonstrates</strong> what capabilities become available with permissions and makes the impact <strong>visible</strong> through reproducible, controlled examples. <i>Expected features:</i> <ul><li><strong>Permission wizard</strong>: request permissions step-by-step, with clear explanation <i>before</i> and <i>after</i> granting (what it enables, typical risks, alternatives).</li><li><strong>Activity dashboard</strong>: a local timeline showing <i>when</i> the app accessed a capability (e.g., contacts, photos, location), with reason and context.</li><li><strong>Safe simulation mode</strong>: whenever possible use <strong>synthetic data</strong> or local samples (e.g., user-created dummy contacts inside the app, bundled demo images) instead of real data; if real data is used, minimize and keep processing local.</li><li><strong>Misuse patterns</strong>: illustrate \"misuse\" scenarios <strong>without</strong> exfiltration (e.g., permission->inference, access frequency, granularity), with risk indicators and explanations.</li><li><strong>Full transparency</strong>: a \"What the app does\" panel listing all actions, module toggles, and a report export that stays <i>local</i>.</li><li><strong>Platform comparison</strong>: if feasible, compare Android/iOS permission differences (runtime permission flow, notifications, background limits) and UX impact.</li><li><strong>Evaluation</strong>: case studies and small user testing (understanding, perceived risk, mistakes), with metrics such as time-to-understand, reduction of unnecessary grants, and UI clarity.</li></ul> <i>Note:</i> the project must remain <strong>ethically and legally safe</strong>: no sending data to external servers, no stealth features, no bypassing protections. The goal is a <strong>demonstrator</strong> that makes the difference between <i>necessary permission</i> and <i>excessive permission</i> tangible and improves user awareness."
     },
     "difficulty": 5,
-    "taken": false
+    "taken": true
   },
   {
     "slug": "duckyscript-emulator",
@@ -329,4 +329,76 @@
     "difficulty": 5,
     "taken": false
   },
+  {
+    "slug": "hid-backdoor-state-of-the-art",
+    "section": {
+      "it": "Cyber security",
+      "en": "Cyber security"
+    },
+    "title": {
+      "it": "Stato dell'arte di tecniche HID-based e progettazione di un framework di analisi controllata",
+      "en": "State of the art of HID-based techniques and design of a controlled analysis framework"
+    },
+    "goal": {
+      "it": "<strong>Studiare</strong> in modo sistematico le tecniche osservate in scenari <strong>HID-based</strong> (dispositivi che emulano tastiera) che possono portare a <i>esecuzione automatica</i>, <i>persistenza</i> e <i>controllo</i> di un host, costruendo una <strong>tassonomia</strong> e una matrice tecnica->prerequisiti->impatto->tracce->contromisure. <strong>Progettare e realizzare</strong> un framework di <strong>riproduzione controllata</strong> (in VM/lab) che permetta di emulare questi scenari in modo <strong>non distruttivo</strong>, raccogliendo log e generando report utili a valutazione e difesa.",
+      "en": "<strong>Systematically study</strong> HID-based techniques (keyboard-emulating devices) that can enable <i>automatic execution</i>, <i>persistence</i>, and <i>host control</i>, building a <strong>taxonomy</strong> and a technique->prerequisites->impact->traces->countermeasures matrix. <strong>Design and implement</strong> a <strong>controlled reproduction</strong> framework (VM/lab) to emulate such scenarios in a <strong>non-destructive</strong> way, collect logs, and generate reports useful for evaluation and defense."
+    },
+    "tools": {
+      "it": [
+        "Python",
+        "Basi OS (Windows/Linux)",
+        "Ambienti virtualizzati (VM)",
+        "Raccolta log (eventi, processi, filesystem)"
+      ],
+      "en": [
+        "Python",
+        "OS basics (Windows/Linux)",
+        "Virtualized environments (VMs)",
+        "Logging collection (events, processes, filesystem)"
+      ]
+    },
+    "about": {
+      "it": "Il progetto mira a trasformare un insieme di tecniche HID-based (es. sequenze di hotkey e comandi, apertura di shell/Run dialog, download/exec, tentativi di persistenza) in un corpus <strong>analizzabile</strong> e <strong>riproducibile</strong> in laboratorio. L'obiettivo non è creare malware utilizzabile, ma <strong>capire</strong> come queste tecniche funzionano, quali prerequisiti richiedono e quali tracce lasciano, così da derivare <strong>contromisure</strong> pratiche. <i>Output e componenti attesi:</i> <ul><li><strong>Tassonomia</strong> di tecniche HID-based: categorie (esecuzione iniziale, escalation/abuso funzionalità, persistenza, difesa/evasione), prerequisiti (privilegi, configurazioni, user interaction) e impatti.</li><li><strong>Matrice</strong> tecnica->prerequisiti->impatto->tracce->contromisure, con esempi e riferimenti a fonti pubbliche (blog, report, PoC noti), e una sezione su limiti/varianti (layout tastiera, timing, versioni OS).</li><li><strong>Framework di emulazione controllata</strong>: motore che esegue scenari \"scriptati\" in VM generando <i>event trace</i> di input (timing, tasti, combinazioni) e <strong>azioni simulate</strong> (es. placeholder al posto di download/exec reali) per evitare effetti dannosi.</li><li><strong>Raccolta evidenze</strong>: acquisizione e correlazione di log di processo, eventi di sistema, modifiche a filesystem/registry (dove applicabile), e timeline delle azioni per evidenziare <strong>tracce</strong> tipiche.</li><li><strong>Report automatico</strong>: generazione di un report per scenario con timeline, indicatori (cosa è successo, dove, con quale sequenza), e suggerimenti di <strong>mitigazione</strong> (hardening, regole di detection, alerting).</li><li><strong>Valutazione</strong>: confronto tra scenari (es. con/ senza mitigazioni) e misure di efficacia delle contromisure (riduzione superficie d'attacco, aumento visibilità, riduzione falsi positivi dove applicabile).</li></ul> <i>Nota:</i> il prototipo è pensato per <strong>test controllati</strong> e <strong>ripetibili</strong> su VM/host isolati, con obiettivo di misurare <strong>efficacia</strong>, <strong>stealth</strong> e <strong>tracce</strong> delle tecniche e confrontare le contromisure.",
+      "en": "This project turns a set of HID-based techniques (e.g., hotkey/command sequences, opening shell/Run dialogs, download/exec attempts, persistence attempts) into an <strong>analyzable</strong> and <strong>reproducible</strong> lab corpus. The goal is not to build deployable malware, but to <strong>understand</strong> how these techniques work, what prerequisites they require, and what traces they leave, in order to derive practical <strong>countermeasures</strong>. <i>Expected outputs and components:</i> <ul><li><strong>Taxonomy</strong> of HID-based techniques: categories (initial execution, feature abuse, persistence, evasion), prerequisites (privileges, configuration, user interaction), and impacts.</li><li><strong>Matrix</strong> technique->prerequisites->impact->traces->countermeasures, with examples and references to public sources (blogs, reports, known PoCs), plus limits/variants (keyboard layouts, timing, OS versions).</li><li><strong>Controlled emulation framework</strong>: an engine that runs scripted scenarios in VMs, generating input event traces (timing, keys, combos) and <strong>simulated actions</strong> (placeholders instead of real download/exec) to avoid harmful effects.</li><li><strong>Evidence collection</strong>: collect and correlate process logs, system events, filesystem/registry changes (where applicable), and action timelines to highlight typical <strong>artifacts</strong>.</li><li><strong>Automated reporting</strong>: per-scenario reports with timelines, indicators (what happened, where, with which sequence), and <strong>mitigation</strong> guidance (hardening, detection rules, alerting).</li><li><strong>Evaluation</strong>: compare scenarios (e.g., with/without mitigations) and measure countermeasure effectiveness (attack surface reduction, increased visibility, reduced false positives where applicable).</li></ul> <i>Note (lab framing):</i> the prototype targets <strong>controlled</strong>, <strong>repeatable</strong> testing on isolated VMs/hosts to measure <strong>effectiveness</strong>, <strong>stealth</strong>, and <strong>artifacts</strong> and to evaluate countermeasures."
+    },
+    "difficulty": 4,
+    "taken": true
+  },
+  {
+    "slug": "tor-onionflation-analysis",
+    "section": {
+      "it": "Cyber security",
+      "en": "Cyber security"
+    },
+    "title": {
+      "it": "Riproduzione e analisi sperimentale dell'attacco OnionFlation contro Tor Onion Services",
+      "en": "Experimental reproduction and analysis of the OnionFlation attack against Tor Onion Services"
+    },
+    "goal": {
+      "it": "Studiare e riprodurre in un <strong>ambiente Tor isolato e controllato</strong> la classe di attacchi <strong>OnionFlation</strong> descritta nel paper <i>\"Onions Got Puzzled: On the Challenges of Mitigating Denial-of-Service Problems in Tor Onion Services\"</i> (USENIX Security 2025). Il progetto deve analizzare il comportamento del meccanismo <strong>Proof-of-Work / client puzzle</strong> utilizzato dagli Onion Services per mitigare attacchi DoS, misurando come varia la difficoltà dei puzzle in presenza di traffico normale, congestione reale e condizioni riconducibili a OnionFlation. L'obiettivo finale è individuare <strong>indicatori osservabili</strong> utili a distinguere un aumento legittimo del carico da una manipolazione artificiale del meccanismo di difesa.",
+      "en": "Study and reproduce, within an <strong>isolated and controlled Tor environment</strong>, the <strong>OnionFlation</strong> class of attacks described in the paper <i>\"Onions Got Puzzled: On the Challenges of Mitigating Denial-of-Service Problems in Tor Onion Services\"</i> (USENIX Security 2025). The project should analyze the behavior of the <strong>Proof-of-Work / client puzzle</strong> mechanism used by Onion Services to mitigate DoS attacks, measuring how puzzle difficulty changes under normal traffic, genuine congestion, and conditions associated with OnionFlation. The final goal is to identify <strong>observable indicators</strong> that can help distinguish legitimate increases in workload from artificial manipulation of the defense mechanism."
+    },
+    "tools": {
+      "it": [
+        "Linux e networking (medio)",
+        "Tor e Onion Services",
+        "Python per automazione, raccolta dati e analisi",
+        "Docker e/o ambienti virtualizzati",
+        "Analisi di log, metriche e serie temporali"
+      ],
+      "en": [
+        "Linux and networking (intermediate)",
+        "Tor and Onion Services",
+        "Python for automation, data collection, and analysis",
+        "Docker and/or virtualized environments",
+        "Log, metrics, and time-series analysis"
+      ]
+    },
+    "about": {
+      "it": "<i>Idea centrale:</i> il progetto parte da un <strong>paper scientifico recente</strong> e ne riproduce sperimentalmente uno degli scenari di attacco in una rete Tor privata, con l'obiettivo di comprendere il comportamento del sistema e studiare possibili criteri di rilevamento. <br><br><i>Attività previste:</i> <ul><li><strong>Studio del paper di riferimento</strong>: analisi del funzionamento dei client puzzle degli Onion Services, del Difficulty Update Algorithm e delle condizioni che rendono possibile OnionFlation.</li><li><strong>Creazione della rete</strong>: realizzazione di una rete Tor privata e riproducibile con Onion Service, client e nodi necessari alla sperimentazione, senza coinvolgere servizi o relay pubblici. (<i>Si possono utilizzare strumenti come Chutney o Shadow</i>)</li><li><strong>Generazione di scenari controllati</strong>: definizione di almeno tre condizioni sperimentali - traffico normale, congestione reale e scenario OnionFlation - mantenendo ripetibili configurazione e carico generato.</li><li><strong>Raccolta metriche</strong>: monitoraggio di difficoltà dei puzzle, richieste ricevute e accettate, latenza, utilizzo CPU e memoria, andamento temporale del traffico e altre metriche utili a caratterizzare il comportamento del servizio.</li><li><strong>Analisi comparativa</strong>: studio delle differenze tra congestione naturale e manipolazione artificiale della difficoltà, individuando pattern o combinazioni di indicatori che possano essere utilizzati per riconoscere condizioni anomale.</li><li><strong>Prototipo di rilevamento</strong>: sviluppo, se i risultati sperimentali lo consentono, di un semplice sistema di early warning basato su regole, soglie o tecniche statistiche, senza richiedere necessariamente modelli di machine learning. Un esempio potrebbe essere lo sviluppo di un semplice sistema di <strong>early warning</strong> capace di monitorare alcune metriche dell'Onion Service, come difficoltà dei puzzle, numero di richieste, utilizzo CPU e latenza, per individuare comportamenti anomali compatibili con un attacco OnionFlation. Il rilevamento può essere basato su <strong>regole, soglie o tecniche statistiche</strong>.</li><li><strong>Valutazione</strong>: misura del tempo di rilevamento, falsi positivi, falsi negativi, overhead del monitoraggio e robustezza del metodo rispetto a differenti livelli di traffico.</li></ul> <i>Riferimento scientifico:</i> <strong>\"Onions Got Puzzled: On the Challenges of Mitigating Denial-of-Service Problems in Tor Onion Services\"</strong>, USENIX Security 2025. <i>Nota:</i> tutte le attività devono essere svolte esclusivamente in <strong>ambienti controllati e autorizzati</strong>. Il progetto non prevede test contro Onion Services o relay appartenenti alla rete Tor pubblica. L'obiettivo è produrre una <strong>rete di test riproducibile</strong>, una caratterizzazione sperimentale dell'attacco e, ove possibile, un meccanismo di rilevamento utilizzabile a fini di ricerca e difesa.",
+      "en": "<i>Core idea:</i> the project starts from a <strong>recent scientific paper</strong> and experimentally reproduces one of its attack scenarios inside a private Tor test network, with the goal of understanding the system behavior and investigating possible detection criteria. <i>Expected activities:</i> <ul><li><strong>Study of the reference paper</strong>: analyze the Onion Services client puzzle mechanism, the Difficulty Update Algorithm, and the conditions that enable OnionFlation.</li><li><strong>Tor test network creation</strong>: build a private and reproducible Tor network including an Onion Service, clients, and the nodes required for experimentation, without involving public services or relays. (<i>You can use tools such as Chutney or Shadow</i>)</li><li><strong>Controlled scenario generation</strong>: define at least three experimental conditions - normal traffic, genuine congestion, and an OnionFlation scenario - while keeping configuration and generated workload reproducible.</li><li><strong>Metrics collection</strong>: monitor puzzle difficulty, received and accepted requests, latency, CPU and memory usage, traffic evolution over time, and other metrics useful for characterizing service behavior. One example could be the development of a simple <strong>early warning</strong> system capable of monitoring certain metrics of the Onion Service, such as puzzle difficulty, number of requests, CPU usage, and latency, to detect anomalous behavior consistent with an OnionFlation attack. Detection can be based on <strong>rules, thresholds, or statistical techniques</strong>.</li><li><strong>Comparative analysis</strong>: study the differences between natural congestion and artificial manipulation of puzzle difficulty, identifying patterns or combinations of indicators that may be useful for detecting anomalous conditions.</li><li><strong>Detection prototype</strong>: if supported by the experimental results, develop a simple early-warning mechanism based on rules, thresholds, or statistical techniques, without necessarily requiring machine-learning models.</li><li><strong>Evaluation</strong>: measure detection time, false positives, false negatives, monitoring overhead, and robustness under different traffic levels.</li></ul> <i>Scientific reference:</i> <strong>\"Onions Got Puzzled: On the Challenges of Mitigating Denial-of-Service Problems in Tor Onion Services\"</strong>, USENIX Security 2025. <i>Note:</i> all activities must be performed exclusively in <strong>controlled and authorized environments</strong>. The project does not involve testing against Onion Services or relays belonging to the public Tor network. The goal is to produce a <strong>reproducible Tor test network</strong>, an experimental characterization of the attack, and, where feasible, a detection mechanism suitable for research and defensive purposes."
+    },
+    "difficulty": 5,
+    "taken": false
+  }
 ]
