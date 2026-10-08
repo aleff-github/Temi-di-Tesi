@@ -54,9 +54,8 @@ function setLang(lang){
   const t = state.i18n;
 
   setText("t_siteTitle", t.siteTitle);
-  setText("t_siteSubtitle", t.siteSubtitle);
   setText("t_sourceLink", t.sourceLink);
-  setText("t_heroEyebrow", t.heroEyebrow);
+  setText("t_siteSubtitle", t.siteSubtitle);
   setText("t_heroTitle", t.heroTitle);
   setText("t_projectsStat", t.projectsStat);
   setText("t_availableStat", t.availableStat);
@@ -78,7 +77,9 @@ function setLang(lang){
   setText("t_footer", t.footer);
 
   $("q").placeholder = t.searchPlaceholder;
-  $("langToggle").textContent = lang === "it" ? "EN" : "IT";
+  $("langToggle").innerHTML = lang === "it"
+  ? '<img src="assets/flags/gb.svg" alt="English" class="lang-flag">'
+  : '<img src="assets/flags/it.svg" alt="Italiano" class="lang-flag">';
   document.title = t.siteTitle;
 
   renderStats();
