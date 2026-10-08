@@ -1,6 +1,6 @@
 {
   "siteTitle": "Thesis topics",
-  "siteSubtitle": "Projects, goals, prerequisites",
+  "siteSubtitle": "Browse projects by research area, technology, prerequisites, and difficulty level.",
   "sourceLink": "Official Thesis Topics Page",
   "searchPlaceholder": "Search by keyword, skill, technology...",
   "allSections": "All sections",
@@ -11,10 +11,25 @@
   "goal": "Goal",
   "tools": "Tools and required skills",
   "about": "Overview",
-  "footer": "Static site on GitHub Pages • JSON data • IT/EN",
+  "footer": "Alessandro Greco",
   "difficultyLabel": "Difficulty",
   "sectionLabel": "Section",
   "statusTaken": "Assigned",
-  "onlyAvailable": "Show available only"
-
+  "statusAvailable": "Available",
+  "onlyAvailable": "Show available only",
+  "heroEyebrow": "Research project catalogue",
+  "heroTitle": "Thesis project",
+  "projectsStat": "projects",
+  "availableStat": "available",
+  "areasStat": "research areas",
+  "filtersLabel": "Filters",
+  "catalogEyebrow": "Explore the catalogue",
+  "catalogTitle": "Thesis topics",
+  "resultsFound": "projects found",
+  "details": "Details",
+  "summary": "At a glance",
+  "sectionShort": "Area",
+  "statusLabel": "Status",
+  "noResultsTitle": "No projects found",
+  "noResultsText": "Try changing your search or removing one of the filters."
 }

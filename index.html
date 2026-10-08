@@ -3,78 +3,175 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#8f1717" />
   <title>Temi di Tesi</title>
   <meta name="description" content="Elenco progetti di tesi, con obiettivi, prerequisiti e difficoltà. IT/EN." />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-  <header class="wrap header">
-    <div class="brand">
-      <div class="brand__title" id="t_siteTitle">Temi di tesi</div>
-      <div class="brand__subtitle" id="t_siteSubtitle">Progetti disponibili, obiettivi e prerequisiti</div>
-    </div>
+  <header class="site-header">
+    <div class="wrap header">
+      <a class="brand" id="homeLink" href="#" aria-label="Temi di tesi">
+        <span class="brand__copy">
+          <span class="brand__title" id="t_siteTitle">Temi di tesi</span>
+        </span>
+      </a>
 
-    <div class="header__actions">
-      <button class="btn" id="langToggle" type="button" aria-label="Switch language">EN</button>
-      <a class="btn btn--ghost" id="t_sourceLink" href="https://sites.google.com/unical.it/iannigbtemitesi/home-page" target="_blank" rel="noreferrer">Pagina Ufficiale Temi di Tesi</a>
+      <div class="header__actions">
+        <button class="btn btn--lang" id="langToggle" type="button" aria-label="Switch language">EN</button>
+        <a class="btn btn--source" id="t_sourceLink" href="https://sites.google.com/unical.it/iannigbtemitesi/home-page" target="_blank" rel="noreferrer">
+          Pagina Ufficiale Temi di Tesi
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
     </div>
   </header>
 
-  <main class="wrap">
-    <section class="controls" aria-label="Filtri">
-      <input id="q" class="input" type="search" placeholder="Cerca per keyword, skill, tecnologia..." />
-      <select id="section" class="select" aria-label="Sezione">
-        <option value="all">Tutte le sezioni</option>
-      </select>
-      <select id="difficulty" class="select" aria-label="Difficoltà">
-        <option value="all">Tutte le difficoltà</option>
-        <option value="1">🔴</option>
-        <option value="2">🔴🔴</option>
-        <option value="3">🔴🔴🔴</option>
-        <option value="4">🔴🔴🔴🔴</option>
-        <option value="5">🔴🔴🔴🔴🔴</option>
-      </select>
-      <label class="check">
-        <input id="onlyAvailable" type="checkbox" />
-        <span id="t_onlyAvailable">Mostra solo disponibili</span>
-      </label>
-      <button id="clear" class="btn btn--ghost" type="button">Reset</button>
-    </section>
+  <main>
+    <div id="browseView">
+      <section class="hero">
+        <div class="wrap hero__inner">
+          <div class="hero__copy">
+            <h1 class="hero__title" id="t_heroTitle">Progetti di tesi</h1>
+            <p class="hero__subtitle" id="t_siteSubtitle">Naviga tra i progetti per area di ricerca, tecnologie, prerequisiti e livello di difficoltà.</p>
+          </div>
 
-    <section id="listView" class="grid" aria-label="Elenco progetti"></section>
+          <div class="searchbox">
+            <span class="searchbox__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none">
+                <path d="m21 21-4.3-4.3m2.3-5.2a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <input id="q" class="searchbox__input" type="search" placeholder="Cerca per keyword, skill, tecnologia..." autocomplete="off" />
+          </div>
 
-    <section id="detailView" class="detail hidden" aria-label="Dettaglio progetto">
+          <div class="hero__stats" aria-label="Statistiche del catalogo">
+            <div class="stat">
+              <strong class="stat__value" id="s_total">0</strong>
+              <span class="stat__label" id="t_projectsStat">progetti</span>
+            </div>
+            <div class="stat">
+              <strong class="stat__value" id="s_available">0</strong>
+              <span class="stat__label" id="t_availableStat">disponibili</span>
+            </div>
+            <div class="stat">
+              <strong class="stat__value" id="s_areas">0</strong>
+              <span class="stat__label" id="t_areasStat">aree di ricerca</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap catalog" aria-label="Catalogo temi di tesi">
+        <div class="toolbar">
+          <div class="toolbar__label">
+            <span class="toolbar__icon" aria-hidden="true">⌘</span>
+            <span id="t_filtersLabel">Filtri</span>
+          </div>
+
+          <div class="toolbar__controls">
+            <label class="sr-only" for="section">Sezione</label>
+            <select id="section" class="select" aria-label="Sezione">
+              <option value="all">Tutte le sezioni</option>
+            </select>
+
+            <label class="sr-only" for="difficulty">Difficoltà</label>
+            <select id="difficulty" class="select select--difficulty" aria-label="Difficoltà">
+              <option value="all">Tutte le difficoltà</option>
+              <option value="1">1 / 5</option>
+              <option value="2">2 / 5</option>
+              <option value="3">3 / 5</option>
+              <option value="4">4 / 5</option>
+              <option value="5">5 / 5</option>
+            </select>
+
+            <label class="check">
+              <input id="onlyAvailable" type="checkbox" />
+              <span class="check__mark" aria-hidden="true"></span>
+              <span id="t_onlyAvailable">Mostra solo disponibili</span>
+            </label>
+
+            <button id="clear" class="btn btn--reset" type="button">Reset</button>
+          </div>
+        </div>
+
+        <div class="results-head">
+          <div>
+            <p class="eyebrow" id="t_catalogEyebrow">Esplora il catalogo</p>
+            <h2 class="results-head__title" id="t_catalogTitle">Temi di tesi</h2>
+          </div>
+          <p class="results-head__count" id="resultsSummary" aria-live="polite"></p>
+        </div>
+
+        <section id="listView" class="grid" aria-label="Elenco progetti"></section>
+      </section>
+    </div>
+
+    <section id="detailView" class="wrap detail hidden" aria-label="Dettaglio progetto">
       <div class="detail__top">
-        <a class="link" href="#" id="backLink">← <span id="t_back">Torna all'elenco</span></a>
-        <button class="btn btn--ghost" id="copyLink" type="button">Copia link</button>
+        <a class="back-link" href="#" id="backLink">
+          <span aria-hidden="true">←</span>
+          <span id="t_back">Torna all'elenco</span>
+        </a>
       </div>
 
-      <h1 id="d_title" class="detail__title"></h1>
-      <div class="detail__meta">
-        <span class="chip" id="d_section"></span>
-        <span class="chip" id="d_difficulty"></span>
-      </div>
+      <article class="detail__hero">
+        <div class="detail__badges">
+          <span class="category-pill" id="d_section"></span>
+          <span class="status-pill" id="d_status"></span>
+        </div>
+        <h1 id="d_title" class="detail__title"></h1>
+        <div id="d_difficulty" class="detail__difficulty"></div>
+      </article>
 
-      <div class="detail__block">
-        <h2 id="t_goal">Obiettivo</h2>
-        <p id="d_goal"></p>
-      </div>
+      <div class="detail__layout">
+        <div class="detail__content">
+          <section class="content-section">
+            <p class="eyebrow" id="t_goal">Obiettivo</p>
+            <div id="d_goal" class="richtext richtext--lead"></div>
+          </section>
 
-      <div class="detail__block">
-        <h2 id="t_tools">Strumenti e conoscenze richieste</h2>
-        <ul id="d_tools" class="bullets"></ul>
-      </div>
+          <section class="content-section">
+            <p class="eyebrow" id="t_about">Di cosa si tratta</p>
+            <div id="d_about" class="richtext"></div>
+          </section>
 
-      <div class="detail__block">
-        <h2 id="t_about">Di cosa si tratta</h2>
-        <p id="d_about"></p>
-      </div>
+          <section class="content-section">
+            <p class="eyebrow" id="t_tools">Strumenti e conoscenze richieste</p>
+            <ul id="d_tools" class="requirements"></ul>
+          </section>
+        </div>
 
+        <aside class="detail__aside">
+          <div class="summary-card">
+            <p class="eyebrow" id="t_summary">In sintesi</p>
+
+            <div class="summary-row">
+              <span class="summary-row__label" id="t_sectionShort">Area</span>
+              <strong class="summary-row__value" id="d_summarySection"></strong>
+            </div>
+
+            <div class="summary-row">
+              <span class="summary-row__label" id="t_statusLabel">Stato</span>
+              <strong class="summary-row__value" id="d_summaryStatus"></strong>
+            </div>
+
+            <div class="summary-row">
+              <span class="summary-row__label" id="t_difficultySummary">Difficoltà</span>
+              <span class="summary-row__value" id="d_summaryDifficulty"></span>
+            </div>
+
+            <button class="btn btn--copy" id="copyLink" type="button">Copia link</button>
+          </div>
+        </aside>
+      </div>
     </section>
   </main>
 
-  <footer class="wrap footer">
-    <span class="muted" id="t_footer">Sito statico su GitHub Pages • Dati in JSON • IT/EN</span>
+  <footer class="site-footer">
+    <div class="wrap footer">
+      <span class="muted" id="t_footer">Alessandro Greco</span>
+    </div>
   </footer>
 
   <script src="assets/js/app.js"></script>
